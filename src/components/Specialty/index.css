@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Thin), url("../../assets/fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../../assets/fonts/roboto/Roboto-Thin.woff") format("woff");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Light), url("../../assets/fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../../assets/fonts/roboto/Roboto-Light.woff") format("woff");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Regular), url("../../assets/fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../../assets/fonts/roboto/Roboto-Regular.woff") format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Medium), url("../../assets/fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../../assets/fonts/roboto/Roboto-Medium.woff") format("woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Bold), url("../../assets/fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../../assets/fonts/roboto/Roboto-Bold.woff") format("woff");
+  font-weight: 700;
+}
+
+.an-specialty {
+  display: inline-block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  width: calc(100% / 3);
+
+  &__icon {
+    background-repeat: no-repeat;
+    width: 35px;
+    display: block;
+    margin: 0 auto 6px;
+    background-size: 26px;
+    background-size: 35px;
+    min-height: 30px;
+    background-position: center;
+
+    &.consultation {
+      background-image: url(../../assets/images/consultation.svg);
+    }
+
+    &.esthetics {
+      background-image: url(../../assets/images/esthetics.svg);
+    }
+
+    &.orthodontics {
+      background-image: url(../../assets/images/orthodontics.svg);
+    }
+
+    &.pediatric-dentistry {
+      background-image: url(../../assets/images/pediatric-dentistry.svg);
+    }
+
+    &.prosthesis {
+      background-image: url(../../assets/images/prosthesis.svg);
+    }
+
+    &.surgery {
+      background-image: url(../../assets/images/surgery.svg);
+    }
+  }
+
+  &__title {
+    font-size: 11px;
+    font-weight: 300;
+    color: #656565;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    line-height: 16px;
+    word-wrap: break-word;
+    font-family: Roboto;
+  }
+
+  @media (min-width: 900px) {
+    &__title {
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
+}

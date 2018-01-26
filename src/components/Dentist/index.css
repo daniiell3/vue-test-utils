@@ -1,0 +1,208 @@
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Thin), url("../../assets/fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../../assets/fonts/roboto/Roboto-Thin.woff") format("woff");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Light), url("../../assets/fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../../assets/fonts/roboto/Roboto-Light.woff") format("woff");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Regular), url("../../assets/fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../../assets/fonts/roboto/Roboto-Regular.woff") format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Medium), url("../../assets/fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../../assets/fonts/roboto/Roboto-Medium.woff") format("woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Bold), url("../../assets/fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../../assets/fonts/roboto/Roboto-Bold.woff") format("woff");
+  font-weight: 700;
+}
+
+.an-button {
+  border-radius: 4px;
+  color: #fff;
+  padding: 19px 0;
+  font-size: 13px;
+  font-weight: 900;
+  transition: .2s ease-out;
+  outline: none;
+  border: 0;
+  display: block;
+  margin: auto;
+  width: 200px;
+  text-decoration: none;
+
+  &.blue {
+    background-color: #1974CE;
+    
+    &:hover {
+      background-color: #1974CE;
+      box-shadow: 0 0 11px 0 #1a75cf, 0 0 6px 0 #1a75cf;
+    }
+  }
+
+  &.btn-boaconsulta {
+    width: 200px;
+    margin: 15px auto 0 auto;
+    display: block;
+    text-align: center;
+  }
+
+  @media (min-width: 900px) {
+    display: inline-block;
+    margin: 0;
+    width: 140px;
+    font-size: 16px;
+    padding: 17px 0;
+  }
+}
+
+.an-dentist {
+  display: inline-block;
+  width: 100%;
+  background: white;
+  font-family: "Roboto", sans-serif;
+
+  &__header {
+    background: #DA4980;
+    padding: 25px 0 10px;
+    text-align: center;
+    color: white;
+  }
+
+  &__h-title {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0 15px;
+    line-height: 20px;
+    margin: 0 0 10px;
+  }
+
+  &__h-info {
+    font-size: 10px;
+    font-weight: 300;
+
+    &--cro {
+      margin-right: 8px;
+    }
+  }
+
+  &__body {
+    padding: 20px 0;
+  }
+
+  &__b-specialties {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+
+    &__title {
+      font-size: 16px;
+      color: #656565;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    &__items {
+      display: inline-block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__b-address,
+  &__b-contact {
+    &__title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #DA4980;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    &__info {
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 300;
+      color: #8E8E8B;
+      margin-bottom: 5px;
+      text-align: center;
+
+      &--latest {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__b-address {
+    padding: 0 30px;
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: 900px) {
+    position: absolute;
+    width: 400px;
+    height: calc(100% - 80px);
+    top: 51%;
+    transform: translateY(-50%);
+    z-index: 2;
+    left: 30px;
+    border-radius: 4px;
+    box-shadow: 0 0 14px 0 #656565;
+
+    &__header {
+      background: #DA4980;
+      padding: 27px 0 10px;
+      border-radius: 4px 4px 0 0;
+    }
+
+    &__h-title {
+      font-size: 20px;
+      padding: 0 15px;
+      line-height: 24px;
+      margin-bottom: 7px;
+    }
+  
+    &__h-info {
+      font-size: 10px;
+      font-weight: 300;
+    }
+
+    &__body {
+      overflow: auto;
+      height: 470px;
+    }
+
+    &__b-specialties {
+      padding: 0 15px;
+    }
+
+    &__b-address,
+    &__b-contact {
+      &__title {
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+
+      &__info {
+        font-size: 15px;
+        line-height: 19px;
+        margin-bottom: 1px;
+      }
+    }
+  }
+}
