@@ -251,6 +251,8 @@
   @media (min-width: 900px) {
     padding: 50px 40px;
     border-radius: 8px;
+    min-width: 614px;
+    box-sizing: border-box;
 
     &__plan {
       width: 135px;

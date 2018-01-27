@@ -89,6 +89,7 @@ storiesOf('Plan', module)
   .add('Label', () => ({
     render (h) {
       return h(Plan, { props: Object.assign({}, planProps, {
+        description: '<p>Aqui você encontra planos mensais, anuais e sem carência, para usar amanhã!</p>',
         label: 'Mais vendido'
       }) }, ['renders component: Plan'])
     }
@@ -161,18 +162,40 @@ storiesOf('Dentist', module)
       return h(Dentist, { props: dentistProps }, ['renders component: Dentist'])
     }
   }))
-  .add('Color', () => ({
+  .add('Color / Specialties', () => ({
     render (h) {
       return h(Dentist, { props: Object.assign({}, dentistProps, {
-        secondaryColor: '#8149da'
+        secondaryColor: '#8149da',
+        dentist: Object.assign({}, dentistProps.dentist, {
+          specialties: [
+            {
+              type: 'prosthesis',
+              title: 'Prótese Dentária'
+            },
+            {
+              type: 'orthodontics',
+              title: 'Ortodontia'
+            }
+          ]
+        })
       }) }, ['renders component: Dentist'])
     }
   }))
-  .add('Link', () => ({
+  .add('Link / Color', () => ({
     render (h) {
       return h(Dentist, { props: Object.assign({}, dentistProps, {
         secondaryColor: '#1974ce',
         dentist: Object.assign({}, dentistProps.dentist, {
+          specialties: [
+            {
+              type: 'prosthesis',
+              title: 'Prótese Dentária'
+            },
+            {
+              type: 'orthodontics',
+              title: 'Ortodontia'
+            }
+          ],
           boaConsultaUrl: 'https://odontoprevonline.com.br/encontre-um-dentista'
         })
       }) }, ['renders component: Dentist'])

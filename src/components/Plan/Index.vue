@@ -7,7 +7,10 @@
     <div class="plan__wrap">
       <img v-if="icon" class="plan__icon" :src="icon" />
       <h3 class="plan__title">{{ title }}</h3>
-      <div class="plan__description" v-html="description"></div>
+      <div
+        class="plan__description"
+        v-html="description"
+        v-if="description" />
       <div class="plan__advantages">
         <h5 class="plan__advantages__title">Algumas das Vantagens</h5>
         <ul class="plan__advantages__items">
