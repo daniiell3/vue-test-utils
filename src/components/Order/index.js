@@ -7,7 +7,7 @@ export default {
       type: Object,
       required: true
     },
-    cancelPlan: {
+    handleCancel: {
       type: Function,
       required: true
     },

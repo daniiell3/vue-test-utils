@@ -1,5 +1,5 @@
 <template>
-  <div class="confirm-cancel" v-if="active">
+  <div class="confirm-cancel" v-if="isActive">
     <h3 class="confirm-cancel__title">Tem certeza que deseja cancelar o seu plano {{ item.plan.title.toUpperCase() }} ?</h3>
     <div
       class="confirm-cancel__dependents-wrap"

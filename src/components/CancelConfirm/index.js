@@ -3,7 +3,7 @@ import VButton from '../VButton/Index.vue'
 export default {
   name: 'CancelConfirm',
   props: {
-    active: {
+    isActive: {
       type: Boolean,
       required: true
     },

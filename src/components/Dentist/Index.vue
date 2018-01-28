@@ -2,11 +2,11 @@
   <div
     ref="dentist"
     class="an-dentist"
-    v-if="activeDentist"
+    v-if="isActive"
   >
     <div
       class="an-dentist__header"
-      v-bind:style="{ backgroundColor: secondaryColor }">
+      v-bind:style="{ backgroundColor: color }">
       <h3 class="an-dentist__h-title">{{ dentist | name }}</h3>
       <p class="an-dentist__h-info">
         <span class="an-dentist__h-info--cro">CRO {{ dentist.cro }}</span>
@@ -27,7 +27,7 @@
       <div class="an-dentist__b-address">
         <h5
           class="an-dentist__b-address__title"
-          v-bind:style="{ color: secondaryColor }"
+          v-bind:style="{ color: color }"
         >Endereço</h5>
         <p class="an-dentist__b-address__info">{{ dentist.address | address }}</p>
         <p class="an-dentist__b-address__info">{{ dentist.address.postcode | postcode }}</p>
@@ -36,7 +36,7 @@
       <div class="an-dentist__b-contact">
         <h5
           class="an-dentist__b-contact__title"
-          v-bind:style="{ color: secondaryColor }"
+          v-bind:style="{ color: color }"
         >Contato</h5>
         <p class="an-dentist__b-contact__info">{{ dentist.phone | phone }}</p>
       </div>
@@ -45,7 +45,7 @@
           :href="dentist.boaConsultaUrl"
           class="an-button waves-effect waves-light btn-large blue btn-boaconsulta"
           target="_blank"
-          v-bind:style="{ backgroundColor: secondaryColor }"
+          v-bind:style="{ backgroundColor: color }"
         >Agende sua consulta</a>
       </div>
     </div>

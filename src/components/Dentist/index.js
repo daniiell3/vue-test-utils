@@ -6,7 +6,7 @@ export default {
     Specialty
   },
   props: {
-    activeDentist: {
+    isActive: {
       type: Boolean,
       required: true
     },
@@ -14,7 +14,7 @@ export default {
       type: Object,
       required: true
     },
-    secondaryColor: {
+    color: {
       type: String,
       required: false,
       default: '#DA4980'

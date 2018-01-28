@@ -19,7 +19,7 @@ const orderProps = {
     main: 'Daniel Santos',
     dependents: []
   },
-  cancelPlan: () => {}
+  handleCancel: () => {}
 }
 
 storiesOf('Order', module)
@@ -51,6 +51,7 @@ storiesOf('Order', module)
     render (h) {
       return h(Order, { props: Object.assign({}, orderProps, {
         item: Object.assign({}, orderProps.item, {
+          dependents: ['Daniela Souza', 'Maria Tereza'],
           orderStatus: 'canceled'
         }),
         disabled: true
@@ -96,7 +97,7 @@ storiesOf('Plan', module)
   }))
 
 const cancelConfirmProps = {
-  active: true,
+  isActive: true,
   item: {
     plan: {
       title: 'Dental Estética'
@@ -125,7 +126,7 @@ storiesOf('CancelConfirm', module)
   }))
 
 const dentistProps = {
-  activeDentist: true,
+  isActive: true,
   dentist: {
     name: 'Cristina Yuri Shigenaga',
     cro: '44765',
@@ -165,7 +166,7 @@ storiesOf('Dentist', module)
   .add('Color / Specialties', () => ({
     render (h) {
       return h(Dentist, { props: Object.assign({}, dentistProps, {
-        secondaryColor: '#8149da',
+        color: '#8149da',
         dentist: Object.assign({}, dentistProps.dentist, {
           specialties: [
             {
@@ -184,7 +185,7 @@ storiesOf('Dentist', module)
   .add('Link / Color', () => ({
     render (h) {
       return h(Dentist, { props: Object.assign({}, dentistProps, {
-        secondaryColor: '#1974ce',
+        color: '#1974ce',
         dentist: Object.assign({}, dentistProps.dentist, {
           specialties: [
             {

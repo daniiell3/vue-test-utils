@@ -28,7 +28,7 @@
       >
         <VButton
           label="Cancelar Plano"
-          :onClick="cancelPlan"
+          :onClick="handleCancel"
           :eventData="item"
           bg="gray" />
       </div>
