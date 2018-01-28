@@ -1,3 +1,4 @@
+import Vuex from 'vuex'
 import { storiesOf } from '@storybook/vue'
 import Centered from '@storybook/addon-centered'
 
@@ -22,7 +23,7 @@ const orderProps = {
   handleCancel: () => {}
 }
 
-storiesOf('Order', module)
+storiesOf('Order - Props', module)
   .addDecorator(Centered)
   .add('Payment Review', () => ({
     render (h) {
@@ -73,7 +74,7 @@ const planProps = {
   icon: 'https://loja.odontoprevonline.com.br/pub/media/catalog/product//e/s/estetica_2.png'
 }
 
-storiesOf('Plan', module)
+storiesOf('Plan - Props', module)
   .addDecorator(Centered)
   .add('Default', () => ({
     render (h) {
@@ -94,6 +95,60 @@ storiesOf('Plan', module)
         label: 'Mais vendido'
       }) }, ['renders component: Plan'])
     }
+  }))
+
+const store = new Vuex.Store({
+  modules: {
+    dentist: {
+      namespaced: true,
+      state: {
+        isActive: true,
+        item: {
+          name: 'Cristina Yuri Shigenaga',
+          cro: '44765',
+          providerType: 'Consultório Isolado - Odontológico Pessoa Física',
+          phone: '11 2041-0821',
+          specialties: [
+            {
+              type: 'consultation',
+              title: 'Clínico Geral'
+            },
+            {
+              type: 'surgery',
+              title: 'Cirurgia'
+            },
+            {
+              type: 'pediatric-dentistry',
+              title: 'Odontopediatria'
+            }
+          ],
+          address: {
+            postcode: '03881-170',
+            city: 'São Paulo',
+            state: 'SP',
+            description: 'Rua Sargento Evangelista, 05 SL 02',
+            neighborhood: 'Ponte Rasa'
+          }
+        },
+        color: '#DA4980'
+      },
+      getters: {
+        isActive: state => state.isActive,
+        item: state => state.item,
+        color: state => state.color
+      }
+    }
+  },
+  strict: false
+})
+  
+storiesOf('Dentist - Vuex', module)
+  .addDecorator(Centered)
+  .add('Default', () => ({
+    render (h) {
+      return h(Dentist, {}, ['renders component: Dentist'])
+    },
+    store: store
   }))
 
 const cancelConfirmProps = {
@@ -122,83 +177,5 @@ storiesOf('CancelConfirm', module)
           dependents: ['Daniela Souza', 'Maria Tereza']
         })
       }) }, ['renders component: CancelConfirm'])
-    }
-  }))
-
-const dentistProps = {
-  isActive: true,
-  dentist: {
-    name: 'Cristina Yuri Shigenaga',
-    cro: '44765',
-    providerType: 'Consultório Isolado - Odontológico Pessoa Física',
-    phone: '11 2041-0821',
-    specialties: [
-      {
-        type: 'consultation',
-        title: 'Clínico Geral'
-      },
-      {
-        type: 'surgery',
-        title: 'Cirurgia'
-      },
-      {
-        type: 'pediatric-dentistry',
-        title: 'Odontopediatria'
-      }
-    ],
-    address: {
-      postcode: '03881-170',
-      city: 'São Paulo',
-      state: 'SP',
-      description: 'Rua Sargento Evangelista, 05 SL 02',
-      neighborhood: 'Ponte Rasa'
-    }
-  }
-}
-
-storiesOf('Dentist', module)
-  .addDecorator(Centered)
-  .add('Default', () => ({
-    render (h) {
-      return h(Dentist, { props: dentistProps }, ['renders component: Dentist'])
-    }
-  }))
-  .add('Color / Specialties', () => ({
-    render (h) {
-      return h(Dentist, { props: Object.assign({}, dentistProps, {
-        color: '#8149da',
-        dentist: Object.assign({}, dentistProps.dentist, {
-          specialties: [
-            {
-              type: 'prosthesis',
-              title: 'Prótese Dentária'
-            },
-            {
-              type: 'orthodontics',
-              title: 'Ortodontia'
-            }
-          ]
-        })
-      }) }, ['renders component: Dentist'])
-    }
-  }))
-  .add('Link / Color', () => ({
-    render (h) {
-      return h(Dentist, { props: Object.assign({}, dentistProps, {
-        color: '#1974ce',
-        dentist: Object.assign({}, dentistProps.dentist, {
-          specialties: [
-            {
-              type: 'prosthesis',
-              title: 'Prótese Dentária'
-            },
-            {
-              type: 'orthodontics',
-              title: 'Ortodontia'
-            }
-          ],
-          boaConsultaUrl: 'https://odontoprevonline.com.br/encontre-um-dentista'
-        })
-      }) }, ['renders component: Dentist'])
     }
   }))

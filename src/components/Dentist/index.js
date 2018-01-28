@@ -1,3 +1,7 @@
+// modules
+import { mapGetters } from 'vuex'
+
+// components
 import Specialty from '../Specialty/Index.vue'
 
 export default {
@@ -5,21 +9,11 @@ export default {
   components: {
     Specialty
   },
-  props: {
-    isActive: {
-      type: Boolean,
-      required: true
-    },
-    dentist: {
-      type: Object,
-      required: true
-    },
-    color: {
-      type: String,
-      required: false,
-      default: '#DA4980'
-    }
-  },
+  computed: mapGetters({
+    isActive: 'dentist/isActive',
+    dentist: 'dentist/item',
+    color: 'dentist/color'
+  }),
   filters: {
     address (address) {
       return `${address.description} - ${address.neighborhood}`
