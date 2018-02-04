@@ -61,14 +61,7 @@ storiesOf('Order - Props', module)
   }))
 
 const planProps = {
-  label: '',
   title: 'Dental Estética',
-  description: '',
-  advantages: [
-    'Placa de Clareamento + Gel',
-    'Limpezas Periódicas',
-    'Emergência 24h'
-  ],
   real: 'R$ 115',
   cents: '00',
   icon: 'https://loja.odontoprevonline.com.br/pub/media/catalog/product//e/s/estetica_2.png'
@@ -81,9 +74,25 @@ storiesOf('Plan - Props', module)
       return h(Plan, { props: planProps }, ['renders component: Plan'])
     }
   }))
+  .add('Advantages', () => ({
+    render (h) {
+      return h(Plan, { props: Object.assign({}, planProps, {
+        advantages: [
+          'Placa de Clareamento + Gel',
+          'Limpezas Periódicas',
+          'Emergência 24h'
+        ]
+      }) }, ['renders component: Plan'])
+    }
+  }))
   .add('Descripion', () => ({
     render (h) {
       return h(Plan, { props: Object.assign({}, planProps, {
+        advantages: [
+          'Placa de Clareamento + Gel',
+          'Limpezas Periódicas',
+          'Emergência 24h'
+        ],
         description: '<p>Aqui você encontra planos mensais, anuais e sem carência, para usar amanhã!</p>'
       }) }, ['renders component: Plan'])
     }
@@ -91,6 +100,11 @@ storiesOf('Plan - Props', module)
   .add('Label', () => ({
     render (h) {
       return h(Plan, { props: Object.assign({}, planProps, {
+        advantages: [
+          'Placa de Clareamento + Gel',
+          'Limpezas Periódicas',
+          'Emergência 24h'
+        ],
         description: '<p>Aqui você encontra planos mensais, anuais e sem carência, para usar amanhã!</p>',
         label: 'Mais vendido'
       }) }, ['renders component: Plan'])

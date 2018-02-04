@@ -14,7 +14,7 @@ export default {
     },
     advantages: {
       type: Array,
-      required: true
+      required: false
     },
     real: {
       type: String,
