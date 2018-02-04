@@ -1,12 +1,13 @@
 <template>
   <div
+    v-if="isActive"
     ref="dentist"
     class="an-dentist"
-    v-if="isActive"
   >
     <div
       class="an-dentist__header"
-      v-bind:style="{ backgroundColor: color }">
+      v-bind:style="{ backgroundColor: color }"
+    >
       <h3 class="an-dentist__h-title">{{ dentist | name }}</h3>
       <p class="an-dentist__h-info">
         <span class="an-dentist__h-info--cro">CRO {{ dentist.cro }}</span>
@@ -40,7 +41,10 @@
         >Contato</h5>
         <p class="an-dentist__b-contact__info">{{ dentist.phone | phone }}</p>
       </div>
-      <div class="an-dentist__b-boaconsulta" v-if="dentist.boaConsultaUrl">
+      <div
+        v-if="dentist.boaConsultaUrl"
+        class="an-dentist__b-boaconsulta"
+      >
         <a
           :href="dentist.boaConsultaUrl"
           class="an-button waves-effect waves-light btn-large blue btn-boaconsulta"

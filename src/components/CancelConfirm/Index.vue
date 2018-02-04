@@ -1,14 +1,17 @@
 <template>
-  <div class="confirm-cancel" v-if="isActive">
-    <h3 class="confirm-cancel__title">Tem certeza que deseja cancelar o seu plano {{ item.plan.title.toUpperCase() }} ?</h3>
+  <div
+    v-if="isActive"
+    class="confirm-cancel"
+  >
+    <h3 class="confirm-cancel__title">Tem certeza que deseja cancelar o seu plano {{ title.toUpperCase() }} ?</h3>
     <div
+      v-if="dependentsExists"
       class="confirm-cancel__dependents-wrap"
-      v-if="item.dependents.length > 0"
     >
       <p class="confirm-cancel__dependents-wrap__label">Você também <span class="confirm-cancel__dependents-wrap__label--red">cancelará</span> os planos dos dependentes:</p>
       <ul class="confirm-cancel__dependents-wrap__items">
         <li
-          v-for="(dependent, key) in item.dependents"
+          v-for="(dependent, key) in dependents"
           :key="key"
           class="confirm-cancel__dependents-wrap__items__item"
         >{{ dependent }}</li>

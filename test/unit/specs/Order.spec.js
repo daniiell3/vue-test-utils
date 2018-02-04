@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallow, mount } from '@vue/test-utils'
 import { assert } from 'chai'
 import Order from '@/components/Order/Index.vue'
 
@@ -72,7 +72,7 @@ describe('Order.vue', () => {
   })
 
   it('cancel |> exists()', () => {
-    const newWrapper = shallow(Order, {
+    const newWrapper = mount(Order, {
       propsData: Object.assign({}, propsData, {
         orderStatus: 'complete'
       })
@@ -97,7 +97,7 @@ describe('Order.vue', () => {
   })
 
   it('canceled', () => {
-    const newWrapper = shallow(Order, {
+    const newWrapper = mount(Order, {
       propsData: Object.assign({}, propsData, {
         orderStatus: 'canceled'
       })

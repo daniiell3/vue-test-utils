@@ -7,9 +7,13 @@ export default {
       type: Boolean,
       required: true
     },
-    item: {
-      type: Object,
+    title: {
+      type: String,
       required: true
+    },
+    dependents: {
+      type: Array,
+      required: false
     },
     cancel: {
       type: Function,
@@ -22,5 +26,10 @@ export default {
   },
   components: {
     VButton
+  },
+  computed: {
+    dependentsExists () {
+      return this.dependents.length > 0
+    }
   }
 }

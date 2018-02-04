@@ -167,12 +167,8 @@ storiesOf('Dentist - Vuex', module)
 
 const cancelConfirmProps = {
   isActive: true,
-  item: {
-    plan: {
-      title: 'Dental Estética'
-    },
-    dependents: []
-  },
+  title: 'Dental Estética',
+  dependents: [],
   cancel: () => {},
   proceed: () => {}
 }
@@ -187,9 +183,7 @@ storiesOf('CancelConfirm', module)
   .add('Dependents', () => ({
     render (h) {
       return h(CancelConfirm, { props: Object.assign({}, cancelConfirmProps, {
-        item: Object.assign({}, cancelConfirmProps.item, {
-          dependents: ['Daniela Souza', 'Maria Tereza']
-        })
+        dependents: ['Daniela Souza', 'Maria Tereza']
       }) }, ['renders component: CancelConfirm'])
     }
   }))
