@@ -1,58 +1,66 @@
 <template>
   <li
     class="orders__item"
-    v-bind:class="{disabled: disabled}"
+    v-bind:class="{disabled: isDisabled}"
   >
     <div class="orders__item__plan">
-      <img class="orders__item__plan__icon" :src="item.plan.icon">
-      <h4 class="orders__item__plan__title">{{ item.plan.title }}</h4>
+      <img
+        class="orders__item__plan__icon"
+        :src="plan.icon" />
+      <h4 class="orders__item__plan__title">{{ plan.title }}</h4>
     </div>
-    <div class="orders__item__actions" v-if="item.orderStatus === 'complete' || item.orderStatus === 'payment_review'">
-      <div class="orders__item__actions__proposal">
+    <div
+      v-if="actionsActive"
+      class="orders__item__actions"
+    >
+      <div class="orders__item__actions__documents">
         <a
           class="btn a-btn waves-effect waves-light"
-          :href="item.plan.proposalUrl"
+          :href="documents.proposal"
           target="_blank"
         ><span>Ver Proposta</span></a>
       </div>
-      <div class="orders__item__actions__proposal">
+      <div class="orders__item__actions__documents">
         <a
           class="btn a-btn waves-effect waves-light"
-          :href="item.plan.contractUrl"
+          :href="documents.contract"
           target="_blank"
         ><span>Ver Contrato</span></a>
       </div>
       <div
-        class="orders__item__actions__cancel-plan"
-        v-if="item.orderStatus === 'complete'"
+        v-if="isComplete"
+        class="orders__item__actions__cancel-plan" 
       >
         <VButton
           label="Cancelar Plano"
           :onClick="handleCancel"
-          :eventData="item"
+          eventData=""
           bg="gray" />
       </div>
     </div>
-    <span class="orders__item__canceled-text" v-if="disabled">Plano Cancelado</span>
+    <span
+      v-if="isDisabled"
+      class="orders__item__canceled-text"
+    >Plano Cancelado</span>
     <div class="orders__item__life-main">
       <span class="orders__item__life-main__title">Titular</span>
-      <span class="orders__item__life-main__name">{{ item.main }}</span>
+      <span class="orders__item__life-main__name">{{ beneficiaries.main }}</span>
     </div>
     <div class="orders__item__dependents">
       <span class="orders__item__dependents__title">Dependentes</span>
       <ul
+        v-if="dependentsExists"
         class="orders__item__dependents__items"
-        v-if="item.dependents.length > 0"
       >
         <li
           class="orders__item__dependents__items__item"
-          v-for="(dependent, key) in item.dependents"
+          v-for="(dependent, key) in beneficiaries.dependents"
           :key="key"
         >{{ dependent }}</li>
       </ul>
       <span
+        v-if="!dependentsExists"
         class="orders__item__dependents__items__item"
-        v-if="item.dependents.length < 1"
       >Sem Dependentes</span>
     </div>
   </li>

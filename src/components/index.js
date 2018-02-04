@@ -9,16 +9,18 @@ import CancelConfirm from './CancelConfirm/Index.vue'
 import Dentist from './Dentist/Index.vue'
 
 const orderProps = {
-  item: {
-    plan: {
-      icon: 'https://odontoprevonline.com.br/sites/default/files/styles/thumbnail/public/2017-08/odontoprev-dental-estetica.png?itok=93uFTNDG',
-      title: 'Dental Estética',
-      proposalUrl: '',
-      contractUrl: ''
-    },
-    orderStatus: 'complete',
+  orderStatus: 'payment_review',
+  plan: {
+    icon: 'https://odontoprevonline.com.br/sites/default/files/styles/thumbnail/public/2017-08/odontoprev-dental-estetica.png?itok=93uFTNDG',
+    title: 'Dental Estética'
+  },
+  beneficiaries: {
     main: 'Daniel Santos',
     dependents: []
+  },
+  documents: {
+    proposal: '',
+    contract: ''
   },
   handleCancel: () => {}
 }
@@ -27,22 +29,21 @@ storiesOf('Order - Props', module)
   .addDecorator(Centered)
   .add('Payment Review', () => ({
     render (h) {
-      return h(Order, { props: Object.assign({}, orderProps, {
-        item: Object.assign({}, orderProps.item, {
-          orderStatus: 'payment_review'
-        })
-      })}, ['renders component: Order'])
+      return h(Order, { props: orderProps }, ['renders component: Order'])
     }
   }))
   .add('Complete', () => ({
     render (h) {
-      return h(Order, { props: orderProps }, ['renders component: Order'])
+      return h(Order, { props: Object.assign({}, orderProps, {
+        orderStatus: 'complete'
+      })}, ['renders component: Order'])
     }
   }))
   .add('Dependents', () => ({
     render (h) {
       return h(Order, { props: Object.assign({}, orderProps, {
-        item: Object.assign({}, orderProps.item, {
+        orderStatus: 'complete',
+        beneficiaries: Object.assign({}, orderProps.beneficiaries, {
           dependents: ['Daniela Souza', 'Maria Tereza']
         })
       }) }, ['renders component: Order'])
@@ -51,11 +52,10 @@ storiesOf('Order - Props', module)
   .add('Canceled', () => ({
     render (h) {
       return h(Order, { props: Object.assign({}, orderProps, {
-        item: Object.assign({}, orderProps.item, {
+        orderStatus: 'canceled',
+        beneficiaries: Object.assign({}, orderProps.beneficiaries, {
           dependents: ['Daniela Souza', 'Maria Tereza'],
-          orderStatus: 'canceled'
-        }),
-        disabled: true
+        })
       }) }, ['renders component: Order'])
     }
   }))

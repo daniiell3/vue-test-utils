@@ -131,7 +131,7 @@
     float: right;
     width: 140px;
 
-    &__proposal, &__cancel-plan {
+    &__documents, &__cancel-plan {
       margin-bottom: 10px;
 
       & > button {
