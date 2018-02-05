@@ -173,7 +173,7 @@ const cancelConfirmProps = {
   proceed: () => {}
 }
 
-storiesOf('CancelConfirm', module)
+storiesOf('CancelConfirm - Props', module)
   .addDecorator(Centered)
   .add('Default', () => ({
     render (h) {
