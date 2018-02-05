@@ -60,8 +60,10 @@ describe('Plan.vue', () => {
       label: label
     })
 
-    assert.isTrue(wrapper.find('.plan__label').exists())
-    assert.strictEqual(wrapper.find('.plan__label').text(), 'mais vendido')
+    const element = wrapper.find('.plan__label')
+
+    assert.isTrue(element.exists())
+    assert.strictEqual(element.text(), 'mais vendido')
   })
 
   it('description |> html()', () => {

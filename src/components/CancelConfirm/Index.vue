@@ -3,7 +3,7 @@
     v-if="isActive"
     class="confirm-cancel"
   >
-    <h3 class="confirm-cancel__title">Tem certeza que deseja cancelar o seu plano {{ title.toUpperCase() }} ?</h3>
+    <h3 class="confirm-cancel__title">{{ finalTitle }}</h3>
     <div
       v-if="dependentsExists"
       class="confirm-cancel__dependents-wrap"

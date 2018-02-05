@@ -28,6 +28,9 @@ export default {
     VButton
   },
   computed: {
+    finalTitle () {
+      return `Tem certeza que deseja cancelar o seu plano ${this.title.toUpperCase()} ?`
+    },
     dependentsExists () {
       return this.dependents.length > 0
     }

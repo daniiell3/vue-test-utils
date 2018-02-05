@@ -72,17 +72,16 @@ describe('Order.vue', () => {
   })
 
   it('cancel |> exists()', () => {
-    const newWrapper = mount(Order, {
-      propsData: Object.assign({}, propsData, {
-        orderStatus: 'complete'
-      })
+    wrapper.setProps({
+      orderStatus: 'complete'
     })
 
-    assert.isTrue(newWrapper.find('.orders__item__actions__cancel-plan').exists())
+    assert.isTrue(wrapper.find('.orders__item__actions__cancel-plan').exists())
   })
 
   it('dependents |> exists(), text()', () => {
     const dependents = ['Daniela Souza', 'Maria Tereza']
+    
     const newWrapper = shallow(Order, {
       propsData: Object.assign({}, propsData, {
         beneficiaries: Object.assign({}, propsData.beneficiaries, {
@@ -90,10 +89,12 @@ describe('Order.vue', () => {
         })
       })
     })
+    
+    const dependentsItems = newWrapper.find('.orders__item__dependents__items')
 
-    assert.isTrue(newWrapper.find('.orders__item__dependents__items').exists())
+    assert.isTrue(dependentsItems.exists())
     assert.isNotTrue(newWrapper.find('span.orders__item__dependents__items__item').exists())
-    assert.strictEqual(newWrapper.find('.orders__item__dependents__items').text(), dependents.join(''))
+    assert.strictEqual(dependentsItems.text(), dependents.join(''))
   })
 
   it('click |> trigger()', () => {
