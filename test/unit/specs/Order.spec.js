@@ -96,7 +96,23 @@ describe('Order.vue', () => {
     assert.strictEqual(newWrapper.find('.orders__item__dependents__items').text(), dependents.join(''))
   })
 
-  it('canceled', () => {
+  it('click |> trigger()', () => {
+    let clicked = false
+    const newWrapper = mount(Order, {
+      propsData: Object.assign({}, propsData, {
+        orderStatus: 'complete',
+        handleCancel: () => {
+          clicked = true
+        }
+      })
+    })
+
+    newWrapper.find('.orders__item__actions__cancel-plan button').trigger('click')
+
+    assert.isTrue(clicked)
+  })
+
+  it('canceled |> classes(), exists()', () => {
     const newWrapper = mount(Order, {
       propsData: Object.assign({}, propsData, {
         orderStatus: 'canceled'

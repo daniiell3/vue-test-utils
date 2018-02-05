@@ -44,37 +44,44 @@ describe('Plan.vue', () => {
       'Limpezas Periódicas',
       'Emergência 24h'
     ]
-    const newWrapper = shallow(Plan, {
-      propsData: Object.assign({}, propsData, {
-        advantages: advantages
-      })
+
+    wrapper.setProps({
+      advantages: advantages
     })
 
-    assert.isTrue(newWrapper.find('.plan__advantages').exists())
-    assert.strictEqual(newWrapper.find('.plan__advantages__items').text(), advantages.join(''))
+    assert.isTrue(wrapper.find('.plan__advantages').exists())
+    assert.strictEqual(wrapper.find('.plan__advantages__items').text(), advantages.join(''))
   })
 
   it('label |> exists(), text()', () => {
-    const newWrapper = shallow(Plan, {
-      propsData: Object.assign({}, propsData, {
-        label: 'mais vendido'
-      })
+    const label = 'mais vendido'
+
+    wrapper.setProps({
+      label: label
     })
 
-    assert.isTrue(newWrapper.find('.plan__label').exists())
-    assert.strictEqual(newWrapper.find('.plan__label').text(), 'mais vendido')
+    assert.isTrue(wrapper.find('.plan__label').exists())
+    assert.strictEqual(wrapper.find('.plan__label').text(), 'mais vendido')
   })
 
   it('description |> html()', () => {
     const description = '<p>Aqui você encontra planos mensais, anuais e sem carência, para usar amanhã!</p>'
 
+    wrapper.setProps({
+      description: description
+    })
+
+    assert.strictEqual(wrapper.find('.plan__description > *').html(), description)
+  })
+
+  it('not title |> isEmpty()', () => {
     const newWrapper = shallow(Plan, {
       propsData: Object.assign({}, propsData, {
-        description: description
+        title: ''
       })
     })
 
-    assert.strictEqual(newWrapper.find('.plan__description > *').html(), description)
+    assert.isTrue(newWrapper.isEmpty())
   })
 
   it('not advantages |> text()', () => {
