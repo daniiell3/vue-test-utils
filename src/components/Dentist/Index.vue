@@ -8,10 +8,10 @@
       class="an-dentist__header"
       v-bind:style="{ backgroundColor: color }"
     >
-      <h3 class="an-dentist__h-title">{{ dentist | name }}</h3>
+      <h3 class="an-dentist__h-title">{{ name }}</h3>
       <p class="an-dentist__h-info">
-        <span class="an-dentist__h-info--cro">CRO {{ dentist.cro }}</span>
-        Estabelecimento: {{ dentist.providerType }}
+        <span class="an-dentist__h-info--cro">{{ cro }}</span>
+        {{ providerType }}
       </p>
     </div>
     <div class="an-dentist__body">
@@ -30,23 +30,23 @@
           class="an-dentist__b-address__title"
           v-bind:style="{ color: color }"
         >Endereço</h5>
-        <p class="an-dentist__b-address__info">{{ dentist.address | address }}</p>
-        <p class="an-dentist__b-address__info">{{ dentist.address.postcode | postcode }}</p>
-        <p class="an-dentist__b-address__info an-dentist__b-address__info--latest">{{ dentist.address | city }}</p>
+        <p class="an-dentist__b-address__info">{{ address }}</p>
+        <p class="an-dentist__b-address__info">{{ postcode }}</p>
+        <p class="an-dentist__b-address__info an-dentist__b-address__info--last">{{ city }}</p>
       </div>
       <div class="an-dentist__b-contact">
         <h5
           class="an-dentist__b-contact__title"
           v-bind:style="{ color: color }"
         >Contato</h5>
-        <p class="an-dentist__b-contact__info">{{ dentist.phone | phone }}</p>
+        <p class="an-dentist__b-contact__info">{{ dentist.phone }}</p>
       </div>
       <div
-        v-if="dentist.boaConsultaUrl"
+        v-if="dentist.scheduleUrl"
         class="an-dentist__b-boaconsulta"
       >
         <a
-          :href="dentist.boaConsultaUrl"
+          :href="dentist.scheduleUrl"
           class="an-button waves-effect waves-light btn-large blue btn-boaconsulta"
           target="_blank"
           v-bind:style="{ backgroundColor: color }"

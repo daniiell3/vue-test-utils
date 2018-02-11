@@ -142,7 +142,7 @@
       margin-bottom: 5px;
       text-align: center;
 
-      &--latest {
+      &--last {
         margin-bottom: 0;
       }
     }

@@ -121,7 +121,7 @@ const store = new Vuex.Store({
           name: 'Cristina Yuri Shigenaga',
           cro: '44765',
           providerType: 'Consultório Isolado - Odontológico Pessoa Física',
-          phone: '11 2041-0821',
+          phone: '(11) 2041-0821',
           specialties: [
             {
               type: 'consultation',
@@ -142,9 +142,10 @@ const store = new Vuex.Store({
             state: 'SP',
             description: 'Rua Sargento Evangelista, 05 SL 02',
             neighborhood: 'Ponte Rasa'
-          }
+          },
+          scheduleUrl: 'https://redeunna.boaconsulta.com/silvio-rogerio-falcao-monteiro?utm_source=odontoprev&utm_medium=button&utm_campaign=silvio-rogerio-falcao-monteiro'
         },
-        color: '#DA4980'
+        color: '#1974ce'
       },
       getters: {
         isActive: state => state.isActive,
