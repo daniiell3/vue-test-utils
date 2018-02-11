@@ -1,5 +1,5 @@
 import { shallow } from '@vue/test-utils'
-import { assert } from 'chai'
+import { expect } from 'chai'
 import Plan from '@/components/Plan/Index.vue'
 
 describe('Plan.vue', () => {
@@ -15,27 +15,27 @@ describe('Plan.vue', () => {
   })
 
   it('not label |> exists()', () => {
-    assert.isFalse(wrapper.find('.plan__label').exists())
+    expect(wrapper.find('.plan__label').exists()).to.be.false
   })
 
   it('icon |> attributes()', () => {
-    assert.strictEqual(wrapper.find('.plan__icon').attributes().src, propsData.icon)
+    expect(wrapper.find('.plan__icon').attributes().src).to.deep.equal(propsData.icon)
   })
 
   it('title |> text()', () => {
-    assert.strictEqual(wrapper.find('.plan__title').text(), propsData.title)
+    expect(wrapper.find('.plan__title').text()).to.deep.equal(propsData.title)
   })
 
   it('not description |> exists()', () => {
-    assert.isFalse(wrapper.find('.plan__description').exists())
+    expect(wrapper.find('.plan__description').exists()).to.be.false
   })
 
   it('not advantages |> exists()', () => {
-    assert.isFalse(wrapper.find('.plan__advantages').exists())
+    expect(wrapper.find('.plan__advantages').exists()).to.be.false
   })
 
   it('price |> text()', () => {
-    assert.strictEqual(wrapper.find('.plan__price').text(), `${propsData.real}, ${propsData.cents}`)
+    expect(wrapper.find('.plan__price').text()).to.deep.equal(`${propsData.real}, ${propsData.cents}`)
   })
 
   it('advantages |> exists(), text()', () => {
@@ -49,8 +49,8 @@ describe('Plan.vue', () => {
       advantages: advantages
     })
 
-    assert.isTrue(wrapper.find('.plan__advantages').exists())
-    assert.strictEqual(wrapper.find('.plan__advantages__items').text(), advantages.join(''))
+    expect(wrapper.find('.plan__advantages').exists()).to.be.true
+    expect(wrapper.find('.plan__advantages__items').text()).to.deep.equal(advantages.join(''))
   })
 
   it('label |> exists(), text()', () => {
@@ -62,8 +62,8 @@ describe('Plan.vue', () => {
 
     const element = wrapper.find('.plan__label')
 
-    assert.isTrue(element.exists())
-    assert.strictEqual(element.text(), label)
+    expect(element.exists()).to.be.true
+    expect(element.text()).to.deep.equal(label)
   })
 
   it('description |> html()', () => {
@@ -73,7 +73,7 @@ describe('Plan.vue', () => {
       description: description
     })
 
-    assert.strictEqual(wrapper.find('.plan__description > *').html(), description)
+    expect(wrapper.find('.plan__description > *').html()).to.deep.equal(description)
   })
 
   it('not title |> isEmpty()', () => {
@@ -83,7 +83,7 @@ describe('Plan.vue', () => {
       })
     })
 
-    assert.isTrue(newWrapper.isEmpty())
+    expect(newWrapper.isEmpty()).to.be.true
   })
 
   it('not advantages |> text()', () => {
@@ -93,6 +93,6 @@ describe('Plan.vue', () => {
       })
     })
 
-    assert.isEmpty(newWrapper.find('.plan__advantages__items').text())
+    expect(newWrapper.find('.plan__advantages__items').text()).to.be.empty
   })
 })

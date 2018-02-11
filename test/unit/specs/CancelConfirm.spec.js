@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { assert } from 'chai'
+import { expect } from 'chai'
 import CancelConfirm from '@/components/CancelConfirm/Index.vue'
 
 describe('CancelConfirm.vue', () => {
@@ -16,11 +16,11 @@ describe('CancelConfirm.vue', () => {
   })
 
   it('title |> text()', () => {
-    assert.include(wrapper.find('.confirm-cancel__title').text(), propsData.title.toUpperCase())
+    expect(wrapper.find('.confirm-cancel__title').text()).to.include(propsData.title.toUpperCase())
   })
 
   it('not dependents |> exists()', () => {
-    assert.isNotTrue(wrapper.find('.confirm-cancel__dependents-wrap').exists())
+    expect(wrapper.find('.confirm-cancel__dependents-wrap').exists()).to.be.false
   })
 
   it('dependents |> exists(), text()', () => {
@@ -32,8 +32,8 @@ describe('CancelConfirm.vue', () => {
 
     const element = wrapper.find('.confirm-cancel__dependents-wrap__items')
 
-    assert.isTrue(element.exists())
-    assert.strictEqual(element.text(), dependents.join(''))
+    expect(element.exists()).to.be.true
+    expect(element.text()).to.deep.equal(dependents.join(''))
   })
 
   it('cancel |> trigger()', () => {
@@ -47,7 +47,7 @@ describe('CancelConfirm.vue', () => {
 
     wrapper.find('.confirm-cancel__actions__action--no button').trigger('click')
 
-    assert.isTrue(clicked)
+    expect(clicked).to.be.true
   })
 
   it('proceed |> trigger()', () => {
@@ -61,7 +61,7 @@ describe('CancelConfirm.vue', () => {
 
     wrapper.find('.confirm-cancel__actions__action--yes button').trigger('click')
 
-    assert.isTrue(clicked)
+    expect(clicked).to.be.true
   })
 
   it('active |> exists()', () => {
@@ -69,6 +69,6 @@ describe('CancelConfirm.vue', () => {
       isActive: false
     })
 
-    assert.isNotTrue(wrapper.find('.confirm-cancel').exists())
+    expect(wrapper.find('.confirm-cancel').exists()).to.be.false
   })
 })

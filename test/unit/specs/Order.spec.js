@@ -1,5 +1,5 @@
 import { shallow, mount } from '@vue/test-utils'
-import { assert } from 'chai'
+import { expect } from 'chai'
 import Order from '@/components/Order/Index.vue'
 
 describe('Order.vue', () => {
@@ -25,50 +25,50 @@ describe('Order.vue', () => {
   })
 
   it('not disabled |> classes()', () => {
-    assert.notInclude(wrapper.find('.orders__item').classes(), 'disabled')
+    expect(wrapper.find('.orders__item').classes()).to.not.include('disabled')
   })
 
   it('icon |> attributes()', () => {
-    assert.strictEqual(wrapper.find('.orders__item__plan__icon').attributes().src, propsData.plan.icon)
+    expect(wrapper.find('.orders__item__plan__icon').attributes().src).to.deep.equal(propsData.plan.icon)
   })
 
   it('title |> text()', () => {
-    assert.strictEqual(wrapper.find('.orders__item__plan__title').text(), propsData.plan.title)
+    expect(wrapper.find('.orders__item__plan__title').text()).to.deep.equal(propsData.plan.title)
   })
 
   it('actions |> exists()', () => {
-    assert.isTrue(wrapper.find('.orders__item__actions').exists())
+    expect(wrapper.find('.orders__item__actions').exists()).to.be.true
   })
 
   it('proposal |> findAll(), filter(), attributes(), at()', () => {
     const documentsAnchor = wrapper.findAll('.orders__item__actions__documents > a')
     const proposal = documentsAnchor.filter(item => item.text() === 'Ver Proposta').at(0)
 
-    assert.strictEqual(proposal.attributes().href, propsData.documents.proposal)
+    expect(proposal.attributes().href).to.deep.equal(propsData.documents.proposal)
   })
 
   it('contract |> findAll(), filter(), attributes(), at()', () => {
     const documentsAnchor = wrapper.findAll('.orders__item__actions__documents > a')
     const contract = documentsAnchor.filter(item => item.text() === 'Ver Contrato').at(0)
 
-    assert.strictEqual(contract.attributes().href, propsData.documents.contract)
+    expect(contract.attributes().href).to.deep.equal(propsData.documents.contract)
   })
 
   it('not cancel |> exists()', () => {
-    assert.isNotTrue(wrapper.find('.orders__item__actions__cancel-plan').exists())
+    expect(wrapper.find('.orders__item__actions__cancel-plan').exists()).to.be.false
   })
 
   it('disabled text |> exists()', () => {
-    assert.isNotTrue(wrapper.find('.orders__item__canceled-text').exists())
+    expect(wrapper.find('.orders__item__canceled-text').exists()).to.be.false
   })
 
   it('main |> text()', () => {
-    assert.strictEqual(wrapper.find('.orders__item__life-main__name').text(), propsData.beneficiaries.main)
+    expect(wrapper.find('.orders__item__life-main__name').text()).to.deep.equal(propsData.beneficiaries.main)
   })
 
   it('not dependents |> exists()', () => {
-    assert.isNotTrue(wrapper.find('.orders__item__dependents__items').exists())
-    assert.isTrue(wrapper.find('span.orders__item__dependents__items__item').exists())
+    expect(wrapper.find('.orders__item__dependents__items').exists()).to.be.false
+    expect(wrapper.find('span.orders__item__dependents__items__item').exists()).to.be.true
   })
 
   it('cancel |> exists()', () => {
@@ -76,7 +76,7 @@ describe('Order.vue', () => {
       orderStatus: 'complete'
     })
 
-    assert.isTrue(wrapper.find('.orders__item__actions__cancel-plan').exists())
+    expect(wrapper.find('.orders__item__actions__cancel-plan').exists()).to.be.true
   })
 
   it('dependents |> exists(), text()', () => {
@@ -92,9 +92,9 @@ describe('Order.vue', () => {
     
     const dependentsItems = newWrapper.find('.orders__item__dependents__items')
 
-    assert.isTrue(dependentsItems.exists())
-    assert.isNotTrue(newWrapper.find('span.orders__item__dependents__items__item').exists())
-    assert.strictEqual(dependentsItems.text(), dependents.join(''))
+    expect(dependentsItems.exists()).to.be.true
+    expect(newWrapper.find('span.orders__item__dependents__items__item').exists()).to.be.false
+    expect(dependentsItems.text()).to.deep.equal(dependents.join(''))
   })
 
   it('click |> trigger()', () => {
@@ -110,7 +110,7 @@ describe('Order.vue', () => {
 
     newWrapper.find('.orders__item__actions__cancel-plan button').trigger('click')
 
-    assert.isTrue(clicked)
+    expect(clicked).to.be.true
   })
 
   it('canceled |> classes(), exists()', () => {
@@ -120,8 +120,8 @@ describe('Order.vue', () => {
       })
     })
 
-    assert.include(newWrapper.find('.orders__item').classes(), 'disabled')
-    assert.isNotTrue(newWrapper.find('.orders__item__actions').exists())
-    assert.isTrue(newWrapper.find('.orders__item__canceled-text').exists())
+    expect(newWrapper.find('.orders__item').classes()).to.include('disabled')
+    expect(newWrapper.find('.orders__item__actions').exists()).to.be.false
+    expect(newWrapper.find('.orders__item__canceled-text').exists()).to.be.true
   })
 })
