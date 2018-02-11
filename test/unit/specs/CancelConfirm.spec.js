@@ -16,11 +16,11 @@ describe('CancelConfirm.vue', () => {
   })
 
   it('title |> text()', () => {
-    expect(wrapper.find('.confirm-cancel__title').text()).to.include(propsData.title.toUpperCase())
+    expect(wrapper.find('.qa-confirm-cancel__title').text()).to.include(propsData.title.toUpperCase())
   })
 
   it('not dependents |> exists()', () => {
-    expect(wrapper.find('.confirm-cancel__dependents-wrap').exists()).to.be.false
+    expect(wrapper.find('.qa-confirm-cancel__dependents-wrap').exists()).to.be.false
   })
 
   it('dependents |> exists(), text()', () => {
@@ -30,7 +30,7 @@ describe('CancelConfirm.vue', () => {
       dependents: dependents
     })
 
-    const element = wrapper.find('.confirm-cancel__dependents-wrap__items')
+    const element = wrapper.find('.qa-confirm-cancel__dependents-wrap__items')
 
     expect(element.exists()).to.be.true
     expect(element.text()).to.deep.equal(dependents.join(''))
@@ -45,7 +45,7 @@ describe('CancelConfirm.vue', () => {
       }
     })
 
-    wrapper.find('.confirm-cancel__actions__action--no button').trigger('click')
+    wrapper.find('.qa-confirm-cancel__actions__action--no button').trigger('click')
 
     expect(clicked).to.be.true
   })
@@ -59,7 +59,7 @@ describe('CancelConfirm.vue', () => {
       }
     })
 
-    wrapper.find('.confirm-cancel__actions__action--yes button').trigger('click')
+    wrapper.find('.qa-confirm-cancel__actions__action--yes button').trigger('click')
 
     expect(clicked).to.be.true
   })
@@ -69,6 +69,6 @@ describe('CancelConfirm.vue', () => {
       isActive: false
     })
 
-    expect(wrapper.find('.confirm-cancel').exists()).to.be.false
+    expect(wrapper.find('.qa-confirm-cancel').exists()).to.be.false
   })
 })
