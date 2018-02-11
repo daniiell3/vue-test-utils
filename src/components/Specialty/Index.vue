@@ -1,7 +1,7 @@
 <template>
-  <li class="an-specialty">
-    <i class="an-specialty__icon" v-bind:class="[type]"></i>
-    <span class="an-specialty__title">{{ title }}</span>
+  <li class="c-specialty">
+    <i class="c-specialty__icon" v-bind:class="[type]"></i>
+    <span class="c-specialty__title">{{ title }}</span>
   </li>
 </template>
 

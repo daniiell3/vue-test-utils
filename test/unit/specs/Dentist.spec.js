@@ -68,7 +68,7 @@ describe('CancelConfirm.vue', () => {
         localVue
       })
   
-      expect(wrapper.find('.an-dentist__h-title').text()).to.deep.equal(`Dr(a). ${state.item.name}`)
+      expect(wrapper.find('.qa-dentist__h-title').text()).to.deep.equal(`Dr(a). ${state.item.name}`)
     })
   
     it('info |> text()', () => {
@@ -76,7 +76,7 @@ describe('CancelConfirm.vue', () => {
         store,
         localVue
       })
-      const text = wrapper.find('.an-dentist__h-info').text()
+      const text = wrapper.find('.qa-dentist__h-info').text()
   
       expect(text).to.include(state.item.cro)
       expect(text).to.include(state.item.providerType)
@@ -88,7 +88,7 @@ describe('CancelConfirm.vue', () => {
         localVue
       })
   
-      expect(wrapper.find('.an-dentist__b-specialties__items').text()).to.deep.equal(state.item.specialties.map(i => i.title).join(' '))
+      expect(wrapper.find('.qa-dentist__b-specialties__items').text()).to.deep.equal(state.item.specialties.map(i => i.title).join(' '))
     })
   
     it('address |> text()', () => {
@@ -97,8 +97,8 @@ describe('CancelConfirm.vue', () => {
         localVue
       })
   
-      expect(wrapper.findAll('.an-dentist__b-address__info').at(0).text()).to.include(state.item.address.description)
-      expect(wrapper.findAll('.an-dentist__b-address__info').at(0).text()).to.include(state.item.address.neighborhood)
+      expect(wrapper.findAll('.qa-dentist__b-address__info').at(0).text()).to.include(state.item.address.description)
+      expect(wrapper.findAll('.qa-dentist__b-address__info').at(0).text()).to.include(state.item.address.neighborhood)
     })
   
     it('postcode |> text()', () => {
@@ -107,7 +107,7 @@ describe('CancelConfirm.vue', () => {
         localVue
       })
   
-      expect(wrapper.findAll('.an-dentist__b-address__info').at(1).text()).to.include(state.item.address.postcode)
+      expect(wrapper.findAll('.qa-dentist__b-address__info').at(1).text()).to.include(state.item.address.postcode)
     })
   
     it('city - state |> text()', () => {
@@ -116,8 +116,8 @@ describe('CancelConfirm.vue', () => {
         localVue
       })
   
-      expect(wrapper.find('.an-dentist__b-address__info--last').text()).to.include(state.item.address.city)
-      expect(wrapper.find('.an-dentist__b-address__info--last').text()).to.include(state.item.address.state)
+      expect(wrapper.find('.qa-dentist__b-address__info--last').text()).to.include(state.item.address.city)
+      expect(wrapper.find('.qa-dentist__b-address__info--last').text()).to.include(state.item.address.state)
     })
   
     it('phone |> text()', () => {
@@ -126,7 +126,7 @@ describe('CancelConfirm.vue', () => {
         localVue
       })
   
-      expect(wrapper.find('.an-dentist__b-contact__info').text()).to.deep.equal(state.item.phone)
+      expect(wrapper.find('.qa-dentist__b-contact__info').text()).to.deep.equal(state.item.phone)
     })
   
     it('scheduleUrl |> exists(), attributes()', () => {
@@ -135,8 +135,8 @@ describe('CancelConfirm.vue', () => {
         localVue
       })
   
-      expect(wrapper.find('.an-dentist__b-boaconsulta').exists()).to.be.true
-      expect(wrapper.find('.an-dentist__b-boaconsulta > a').attributes().href).to.deep.equal(state.item.scheduleUrl)
+      expect(wrapper.find('.qa-dentist__b-boaconsulta').exists()).to.be.true
+      expect(wrapper.find('.qa-dentist__b-boaconsulta > a').attributes().href).to.deep.equal(state.item.scheduleUrl)
     })
   })
 
@@ -164,7 +164,7 @@ describe('CancelConfirm.vue', () => {
         localVue
       })
 
-      expect(wrapper.find('.an-dentist__b-boaconsulta').exists()).to.be.false
+      expect(wrapper.find('.qa-dentist__b-boaconsulta').exists()).to.be.false
     })
   })
 
@@ -190,7 +190,7 @@ describe('CancelConfirm.vue', () => {
         localVue
       })
 
-      expect(wrapper.find('.an-dentist').exists()).to.be.false
+      expect(wrapper.find('.qa-dentist').exists()).to.be.false
     })
   })
 })

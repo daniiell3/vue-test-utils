@@ -28,7 +28,7 @@
   font-weight: 700;
 }
 
-.an-button {
+.c-button {
   border-radius: 4px;
   color: #fff;
   padding: 19px 0;
@@ -67,7 +67,7 @@
   }
 }
 
-.an-dentist {
+.c-dentist {
   display: inline-block;
   width: 100%;
   background: white;
