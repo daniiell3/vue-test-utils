@@ -15,27 +15,27 @@ describe('Plan.vue', () => {
   })
 
   it('not label |> exists()', () => {
-    expect(wrapper.find('.plan__label').exists()).to.be.false
+    expect(wrapper.find('.qa-plan__label').exists()).to.be.false
   })
 
   it('icon |> attributes()', () => {
-    expect(wrapper.find('.plan__icon').attributes().src).to.deep.equal(propsData.icon)
+    expect(wrapper.find('.qa-plan__icon').attributes().src).to.deep.equal(propsData.icon)
   })
 
   it('title |> text()', () => {
-    expect(wrapper.find('.plan__title').text()).to.deep.equal(propsData.title)
+    expect(wrapper.find('.qa-plan__title').text()).to.deep.equal(propsData.title)
   })
 
   it('not description |> exists()', () => {
-    expect(wrapper.find('.plan__description').exists()).to.be.false
+    expect(wrapper.find('.qa-plan__description').exists()).to.be.false
   })
 
   it('not advantages |> exists()', () => {
-    expect(wrapper.find('.plan__advantages').exists()).to.be.false
+    expect(wrapper.find('.qa-plan__advantages').exists()).to.be.false
   })
 
   it('price |> text()', () => {
-    expect(wrapper.find('.plan__price').text()).to.deep.equal(`${propsData.real}, ${propsData.cents}`)
+    expect(wrapper.find('.qa-plan__price').text()).to.deep.equal(`${propsData.real}, ${propsData.cents}`)
   })
 
   it('advantages |> exists(), text()', () => {
@@ -49,8 +49,8 @@ describe('Plan.vue', () => {
       advantages: advantages
     })
 
-    expect(wrapper.find('.plan__advantages').exists()).to.be.true
-    expect(wrapper.find('.plan__advantages__items').text()).to.deep.equal(advantages.join(''))
+    expect(wrapper.find('.qa-plan__advantages').exists()).to.be.true
+    expect(wrapper.find('.qa-plan__advantages__items').text()).to.deep.equal(advantages.join(''))
   })
 
   it('label |> exists(), text()', () => {
@@ -60,7 +60,7 @@ describe('Plan.vue', () => {
       label: label
     })
 
-    const element = wrapper.find('.plan__label')
+    const element = wrapper.find('.qa-plan__label')
 
     expect(element.exists()).to.be.true
     expect(element.text()).to.deep.equal(label)
@@ -73,7 +73,7 @@ describe('Plan.vue', () => {
       description: description
     })
 
-    expect(wrapper.find('.plan__description > *').html()).to.deep.equal(description)
+    expect(wrapper.find('.qa-plan__description > *').html()).to.deep.equal(description)
   })
 
   it('not title |> isEmpty()', () => {
@@ -93,6 +93,6 @@ describe('Plan.vue', () => {
       })
     })
 
-    expect(newWrapper.find('.plan__advantages__items').text()).to.be.empty
+    expect(newWrapper.find('.qa-plan__advantages__items').text()).to.be.empty
   })
 })
