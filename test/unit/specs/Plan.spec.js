@@ -31,7 +31,7 @@ describe('Plan.vue', () => {
   })
 
   it('not advantages |> exists()', () => {
-    assert.isNotTrue(wrapper.find('.plan__advantages').exists())
+    assert.isFalse(wrapper.find('.plan__advantages').exists())
   })
 
   it('price |> text()', () => {
@@ -63,7 +63,7 @@ describe('Plan.vue', () => {
     const element = wrapper.find('.plan__label')
 
     assert.isTrue(element.exists())
-    assert.strictEqual(element.text(), 'mais vendido')
+    assert.strictEqual(element.text(), label)
   })
 
   it('description |> html()', () => {
