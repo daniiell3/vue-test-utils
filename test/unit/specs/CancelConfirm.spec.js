@@ -35,7 +35,7 @@ describe('CancelConfirm.vue', () => {
       dependents: dependents
     })
 
-    const dependentItemsEl = wrapper.find('.qa-confirm-cancel__dependents-wrap__items')
+    const dependentItemsEl = wrapper.find('.qa-confirm-cancel__items')
 
     expect(dependentItemsEl.exists()).to.be.true
     expect(dependentItemsEl.text()).to.deep.equal(dependents.join(''))
@@ -50,7 +50,7 @@ describe('CancelConfirm.vue', () => {
 
     expect(clickHandler.called).to.be.false
 
-    const buttonEl = wrapper.find('.qa-confirm-cancel__actions__action--no button')
+    const buttonEl = wrapper.find('.qa-confirm-cancel__action--no button')
     buttonEl.trigger('click')
 
     expect(clickHandler.called).to.be.true
@@ -65,7 +65,7 @@ describe('CancelConfirm.vue', () => {
 
     expect(clickHandler.called).to.be.false
 
-    const buttonEl = wrapper.find('.qa-confirm-cancel__actions__action--yes button')
+    const buttonEl = wrapper.find('.qa-confirm-cancel__action--yes button')
     buttonEl.trigger('click')
 
     expect(clickHandler.called).to.be.true

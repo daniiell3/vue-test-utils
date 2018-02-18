@@ -52,16 +52,16 @@
     max-width: 230px;
     margin: auto;
 
-    &__action {
-      &--no {
-        margin-bottom: 10px;
-      }
-    }
-
     & button {
       width: 100%;
       border-radius: 4px;
       text-transform: none;
+    }
+  }
+
+  &__action {
+    &--no {
+      margin-bottom: 10px;
     }
   }
 
@@ -73,43 +73,43 @@
     padding: 15px;
     border-radius: 4px;
     box-sizing: border-box;
+  }
 
-    &__label {
+  &__label {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: #8E8E8B;
+    line-height: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    font-family: Roboto;
+
+    &--red {
+      color: #FD5C5C;
+      font-weight: 900;
+    }
+  }
+
+  &__items {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    &__item {
+      font-size: 14px;
+      color: #656565;
+      font-weight: 600;
+      line-height: 18px;
       display: inline-block;
       width: 100%;
       text-align: center;
-      font-size: 16px;
-      color: #8E8E8B;
-      line-height: 20px;
-      font-weight: 400;
-      margin-bottom: 20px;
-      font-family: Roboto;
+      margin-top: 5px;
 
-      &--red {
-        color: #FD5C5C;
-        font-weight: 900;
-      }
-    }
-
-    &__items {
-      display: inline-block;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-
-      &__item {
-        font-size: 14px;
-        color: #656565;
-        font-weight: 600;
-        line-height: 18px;
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        margin-top: 5px;
-
-        &:first-child {
-          margin-top: 0;
-        }
+      &:first-child {
+        margin-top: 0;
       }
     }
   }
@@ -124,19 +124,19 @@
     &__actions {
       width: 100%;
       max-width: 100%;
+    }
 
-      &__action {
-        display: inline-block;
+    &__action {
+      display: inline-block;
 
-        &--no {
-          margin: 0;
-          width: 48%;
-        }
+      &--no {
+        margin: 0;
+        width: 48%;
+      }
 
-        &--yes {
-          float: right;
-          width: 48%;
-        }
+      &--yes {
+        float: right;
+        width: 48%;
       }
     }
 
@@ -146,19 +146,19 @@
       margin: 0 auto 40px;
       display: block;
       padding: 40px 30px;
+    }
 
-      &__label {
-        font-size: 18px;
-        line-height: 22px;
-      }
+    &__label {
+      font-size: 18px;
+      line-height: 22px;
+    }
 
-      &__items {
-        &__item {
-          font-size: 16px;
-          line-height: 20px;
-          font-family: Roboto;
-          font-weight: 500;
-        }
+    &__items {
+      &__item {
+        font-size: 16px;
+        line-height: 20px;
+        font-family: Roboto;
+        font-weight: 500;
       }
     }
   }
