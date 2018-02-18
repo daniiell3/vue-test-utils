@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
+import sinon from 'sinon'
 import CancelConfirm from '@/components/CancelConfirm/Index.vue'
 
 describe('CancelConfirm.vue', () => {
@@ -37,31 +38,31 @@ describe('CancelConfirm.vue', () => {
   })
 
   it('cancel |> trigger()', () => {
-    let clicked = false
+    const clickHandler = sinon.stub()
 
     wrapper.setProps({
-      cancel: () => {
-        clicked = true
-      }
+      cancel: clickHandler
     })
+
+    expect(clickHandler.called).to.be.false
 
     wrapper.find('.qa-confirm-cancel__actions__action--no button').trigger('click')
 
-    expect(clicked).to.be.true
+    expect(clickHandler.called).to.be.true
   })
 
   it('proceed |> trigger()', () => {
-    let clicked = false
+    const clickHandler = sinon.stub()
 
     wrapper.setProps({
-      proceed: () => {
-        clicked = true
-      }
+      proceed: clickHandler
     })
+
+    expect(clickHandler.called).to.be.false
 
     wrapper.find('.qa-confirm-cancel__actions__action--yes button').trigger('click')
 
-    expect(clicked).to.be.true
+    expect(clickHandler.called).to.be.true
   })
 
   it('active |> exists()', () => {

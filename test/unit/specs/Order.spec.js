@@ -1,5 +1,6 @@
 import { shallow, mount } from '@vue/test-utils'
 import { expect } from 'chai'
+import sinon from 'sinon'
 import Order from '@/components/Order/Index.vue'
 
 describe('Order.vue', () => {
@@ -98,19 +99,20 @@ describe('Order.vue', () => {
   })
 
   it('click |> trigger()', () => {
-    let clicked = false
+    const clickHandler = sinon.stub()
+
     const newWrapper = mount(Order, {
       propsData: Object.assign({}, propsData, {
         orderStatus: 'complete',
-        handleCancel: () => {
-          clicked = true
-        }
+        handleCancel: clickHandler
       })
     })
 
+    expect(clickHandler.called).to.be.false
+
     newWrapper.find('.qa-orders__item__actions__cancel-plan button').trigger('click')
 
-    expect(clicked).to.be.true
+    expect(clickHandler.called).to.be.true
   })
 
   it('canceled |> classes(), exists()', () => {
