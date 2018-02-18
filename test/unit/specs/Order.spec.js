@@ -51,4 +51,12 @@ describe('Order.vue', () => {
     const dependentsEmptyEl = wrapper.find('span.qa-orders__dependents__item')
     expect(dependentsEmptyEl.exists()).to.be.true
   })
+
+  it('proposal |> findAll(), filter(), text(), attributes(), at()', () => {
+    const documentsAnchorEl = wrapper.findAll('.qa-orders__documents > a')
+    const proposalEl = documentsAnchorEl.filter(i => i.text() === 'Ver Proposta').at(0)
+    const href = proposalEl.attributes().href
+
+    expect(href).to.deep.equal(propsData.documents.proposal)
+  })
 })
