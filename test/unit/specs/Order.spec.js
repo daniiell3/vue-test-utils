@@ -59,4 +59,12 @@ describe('Order.vue', () => {
 
     expect(href).to.deep.equal(propsData.documents.proposal)
   })
+
+  it('contract |> findAll(), filter(), text(), attributes(), at()', () => {
+    const documentsAnchorEl = wrapper.findAll('.qa-orders__documents > a')
+    const contractEl = documentsAnchorEl.filter(i => i.text() === 'Ver Contrato').at(0)
+    const href = contractEl.attributes().href
+
+    expect(href).to.deep.equal(propsData.documents.contract)
+  })
 })
