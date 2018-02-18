@@ -67,7 +67,7 @@ describe('CancelConfirm.vue', () => {
         store,
         localVue
       })
-      const titleEl = wrapper.find('.qa-dentist__h-title')
+      const titleEl = wrapper.find('.qa-dentist__title')
   
       expect(titleEl.text()).to.deep.equal(`Dr(a). ${state.item.name}`)
     })
@@ -77,7 +77,7 @@ describe('CancelConfirm.vue', () => {
         store,
         localVue
       })
-      const textEl = wrapper.find('.qa-dentist__h-info')
+      const textEl = wrapper.find('.qa-dentist__info')
       const text = textEl.text()
   
       expect(text).to.include(state.item.cro)
@@ -89,7 +89,7 @@ describe('CancelConfirm.vue', () => {
         store,
         localVue
       })
-      const itemsEl = wrapper.find('.qa-dentist__b-specialties__items')
+      const itemsEl = wrapper.find('.qa-dentist__specialties__items')
       const specialties = state.item.specialties.map(i => i.title).join(' ')
   
       expect(itemsEl.text()).to.deep.equal(specialties)
@@ -100,7 +100,7 @@ describe('CancelConfirm.vue', () => {
         store,
         localVue
       })
-      const addressEl = wrapper.findAll('.qa-dentist__b-address__info')
+      const addressEl = wrapper.findAll('.qa-dentist__address__info')
       const text = addressEl.at(0).text()
   
       expect(text).to.include(state.item.address.description)
@@ -112,7 +112,7 @@ describe('CancelConfirm.vue', () => {
         store,
         localVue
       })
-      const addressEl = wrapper.findAll('.qa-dentist__b-address__info')
+      const addressEl = wrapper.findAll('.qa-dentist__address__info')
       const text = addressEl.at(1).text()
   
       expect(text).to.include(state.item.address.postcode)
@@ -123,7 +123,7 @@ describe('CancelConfirm.vue', () => {
         store,
         localVue
       })
-      const addressEl = wrapper.find('.qa-dentist__b-address__info--last')
+      const addressEl = wrapper.find('.qa-dentist__address__info--last')
       const text = addressEl.text()
   
       expect(text).to.include(state.item.address.city)
@@ -135,7 +135,7 @@ describe('CancelConfirm.vue', () => {
         store,
         localVue
       })
-      const contactEl = wrapper.find('.qa-dentist__b-contact__info')
+      const contactEl = wrapper.find('.qa-dentist__contact__info')
   
       expect(contactEl.text()).to.deep.equal(state.item.phone)
     })
@@ -146,10 +146,10 @@ describe('CancelConfirm.vue', () => {
         localVue
       })
 
-      const consultEl = wrapper.find('.qa-dentist__b-boaconsulta')
+      const consultEl = wrapper.find('.qa-dentist__boaconsulta')
       expect(consultEl.exists()).to.be.true
 
-      const anchorEl = wrapper.find('.qa-dentist__b-boaconsulta > a')
+      const anchorEl = wrapper.find('.qa-dentist__boaconsulta > a')
       expect(anchorEl.attributes().href).to.deep.equal(state.item.scheduleUrl)
     })
   })
@@ -177,7 +177,7 @@ describe('CancelConfirm.vue', () => {
         store,
         localVue
       })
-      const consultEl = wrapper.find('.qa-dentist__b-boaconsulta')
+      const consultEl = wrapper.find('.qa-dentist__boaconsulta')
 
       expect(consultEl.exists()).to.be.false
     })
