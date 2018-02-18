@@ -15,27 +15,40 @@ describe('Plan.vue', () => {
   })
 
   it('not label |> exists()', () => {
-    expect(wrapper.find('.qa-plan__label').exists()).to.be.false
+    const labelEl = wrapper.find('.qa-plan__label')
+
+    expect(labelEl.exists()).to.be.false
   })
 
   it('icon |> attributes()', () => {
-    expect(wrapper.find('.qa-plan__icon').attributes().src).to.deep.equal(propsData.icon)
+    const iconEl = wrapper.find('.qa-plan__icon')
+    const src = iconEl.attributes().src
+
+    expect(src).to.deep.equal(propsData.icon)
   })
 
   it('title |> text()', () => {
-    expect(wrapper.find('.qa-plan__title').text()).to.deep.equal(propsData.title)
+    const titleEl = wrapper.find('.qa-plan__title')
+
+    expect(titleEl.text()).to.deep.equal(propsData.title)
   })
 
   it('not description |> exists()', () => {
-    expect(wrapper.find('.qa-plan__description').exists()).to.be.false
+    const descriptionEl = wrapper.find('.qa-plan__description')
+
+    expect(descriptionEl.exists()).to.be.false
   })
 
   it('not advantages |> exists()', () => {
-    expect(wrapper.find('.qa-plan__advantages').exists()).to.be.false
+    const advantagesEl = wrapper.find('.qa-plan__advantages')
+
+    expect(advantagesEl.exists()).to.be.false
   })
 
   it('price |> text()', () => {
-    expect(wrapper.find('.qa-plan__price').text()).to.deep.equal(`${propsData.real}, ${propsData.cents}`)
+    const priceEl = wrapper.find('.qa-plan__price')
+
+    expect(priceEl.text()).to.deep.equal(`${propsData.real}, ${propsData.cents}`)
   })
 
   it('advantages |> exists(), text()', () => {
@@ -49,8 +62,11 @@ describe('Plan.vue', () => {
       advantages: advantages
     })
 
-    expect(wrapper.find('.qa-plan__advantages').exists()).to.be.true
-    expect(wrapper.find('.qa-plan__advantages__items').text()).to.deep.equal(advantages.join(''))
+    const advantagesEl = wrapper.find('.qa-plan__advantages')
+    expect(advantagesEl.exists()).to.be.true
+
+    const advantagesItemsEl = wrapper.find('.qa-plan__advantages__items')
+    expect(advantagesItemsEl.text()).to.deep.equal(advantages.join(''))
   })
 
   it('label |> exists(), text()', () => {
@@ -60,10 +76,10 @@ describe('Plan.vue', () => {
       label: label
     })
 
-    const element = wrapper.find('.qa-plan__label')
+    const labelEl = wrapper.find('.qa-plan__label')
 
-    expect(element.exists()).to.be.true
-    expect(element.text()).to.deep.equal(label)
+    expect(labelEl.exists()).to.be.true
+    expect(labelEl.text()).to.deep.equal(label)
   })
 
   it('description |> html()', () => {
@@ -73,7 +89,8 @@ describe('Plan.vue', () => {
       description: description
     })
 
-    expect(wrapper.find('.qa-plan__description > *').html()).to.deep.equal(description)
+    const descriptionEl = wrapper.find('.qa-plan__description > *')
+    expect(descriptionEl.html()).to.deep.equal(description)
   })
 
   it('not title |> isEmpty()', () => {
@@ -93,6 +110,7 @@ describe('Plan.vue', () => {
       })
     })
 
-    expect(newWrapper.find('.qa-plan__advantages__items').text()).to.be.empty
+    const advantagesEl = newWrapper.find('.qa-plan__advantages__items')
+    expect(advantagesEl.text()).to.be.empty
   })
 })

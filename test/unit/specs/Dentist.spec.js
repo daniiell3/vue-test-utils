@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils'
+import { shallow, mount, createLocalVue } from '@vue/test-utils'
 import { expect } from 'chai'
 import Vuex from 'vuex'
 import Dentist from '@/components/Dentist/Index.vue'
@@ -63,20 +63,22 @@ describe('CancelConfirm.vue', () => {
     })
   
     it('name |> text()', () => {
-      const wrapper = mount(Dentist, {
+      const wrapper = shallow(Dentist, {
         store,
         localVue
       })
+      const titleEl = wrapper.find('.qa-dentist__h-title')
   
-      expect(wrapper.find('.qa-dentist__h-title').text()).to.deep.equal(`Dr(a). ${state.item.name}`)
+      expect(titleEl.text()).to.deep.equal(`Dr(a). ${state.item.name}`)
     })
   
     it('info |> text()', () => {
-      const wrapper = mount(Dentist, {
+      const wrapper = shallow(Dentist, {
         store,
         localVue
       })
-      const text = wrapper.find('.qa-dentist__h-info').text()
+      const textEl = wrapper.find('.qa-dentist__h-info')
+      const text = textEl.text()
   
       expect(text).to.include(state.item.cro)
       expect(text).to.include(state.item.providerType)
@@ -87,56 +89,68 @@ describe('CancelConfirm.vue', () => {
         store,
         localVue
       })
+      const itemsEl = wrapper.find('.qa-dentist__b-specialties__items')
+      const specialties = state.item.specialties.map(i => i.title).join(' ')
   
-      expect(wrapper.find('.qa-dentist__b-specialties__items').text()).to.deep.equal(state.item.specialties.map(i => i.title).join(' '))
+      expect(itemsEl.text()).to.deep.equal(specialties)
     })
   
     it('address |> text()', () => {
-      const wrapper = mount(Dentist, {
+      const wrapper = shallow(Dentist, {
         store,
         localVue
       })
+      const addressEl = wrapper.findAll('.qa-dentist__b-address__info')
+      const text = addressEl.at(0).text()
   
-      expect(wrapper.findAll('.qa-dentist__b-address__info').at(0).text()).to.include(state.item.address.description)
-      expect(wrapper.findAll('.qa-dentist__b-address__info').at(0).text()).to.include(state.item.address.neighborhood)
+      expect(text).to.include(state.item.address.description)
+      expect(text).to.include(state.item.address.neighborhood)
     })
   
     it('postcode |> text()', () => {
-      const wrapper = mount(Dentist, {
+      const wrapper = shallow(Dentist, {
         store,
         localVue
       })
+      const addressEl = wrapper.findAll('.qa-dentist__b-address__info')
+      const text = addressEl.at(1).text()
   
-      expect(wrapper.findAll('.qa-dentist__b-address__info').at(1).text()).to.include(state.item.address.postcode)
+      expect(text).to.include(state.item.address.postcode)
     })
   
     it('city - state |> text()', () => {
-      const wrapper = mount(Dentist, {
+      const wrapper = shallow(Dentist, {
         store,
         localVue
       })
+      const addressEl = wrapper.find('.qa-dentist__b-address__info--last')
+      const text = addressEl.text()
   
-      expect(wrapper.find('.qa-dentist__b-address__info--last').text()).to.include(state.item.address.city)
-      expect(wrapper.find('.qa-dentist__b-address__info--last').text()).to.include(state.item.address.state)
+      expect(text).to.include(state.item.address.city)
+      expect(text).to.include(state.item.address.state)
     })
   
     it('phone |> text()', () => {
-      const wrapper = mount(Dentist, {
+      const wrapper = shallow(Dentist, {
         store,
         localVue
       })
+      const contactEl = wrapper.find('.qa-dentist__b-contact__info')
   
-      expect(wrapper.find('.qa-dentist__b-contact__info').text()).to.deep.equal(state.item.phone)
+      expect(contactEl.text()).to.deep.equal(state.item.phone)
     })
   
     it('scheduleUrl |> exists(), attributes()', () => {
-      const wrapper = mount(Dentist, {
+      const wrapper = shallow(Dentist, {
         store,
         localVue
       })
-  
-      expect(wrapper.find('.qa-dentist__b-boaconsulta').exists()).to.be.true
-      expect(wrapper.find('.qa-dentist__b-boaconsulta > a').attributes().href).to.deep.equal(state.item.scheduleUrl)
+
+      const consultEl = wrapper.find('.qa-dentist__b-boaconsulta')
+      expect(consultEl.exists()).to.be.true
+
+      const anchorEl = wrapper.find('.qa-dentist__b-boaconsulta > a')
+      expect(anchorEl.attributes().href).to.deep.equal(state.item.scheduleUrl)
     })
   })
 
@@ -159,12 +173,13 @@ describe('CancelConfirm.vue', () => {
     })
 
     it('scheduleUrl |> exists()', () => {
-      const wrapper = mount(Dentist, {
+      const wrapper = shallow(Dentist, {
         store,
         localVue
       })
+      const consultEl = wrapper.find('.qa-dentist__b-boaconsulta')
 
-      expect(wrapper.find('.qa-dentist__b-boaconsulta').exists()).to.be.false
+      expect(consultEl.exists()).to.be.false
     })
   })
 
@@ -185,12 +200,13 @@ describe('CancelConfirm.vue', () => {
     })
 
     it('active |> exists()', () => {
-      const wrapper = mount(Dentist, {
+      const wrapper = shallow(Dentist, {
         store,
         localVue
       })
+      const dentistEl = wrapper.find('.qa-dentist')
 
-      expect(wrapper.find('.qa-dentist').exists()).to.be.false
+      expect(dentistEl.exists()).to.be.false
     })
   })
 })

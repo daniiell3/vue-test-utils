@@ -26,50 +26,70 @@ describe('Order.vue', () => {
   })
 
   it('not disabled |> classes()', () => {
-    expect(wrapper.find('.qa-orders__item').classes()).to.not.include('disabled')
+    const orderItemsEl = wrapper.find('.qa-orders__item')
+
+    expect(orderItemsEl.classes()).to.not.include('disabled')
   })
 
   it('icon |> attributes()', () => {
-    expect(wrapper.find('.qa-orders__item__plan__icon').attributes().src).to.deep.equal(propsData.plan.icon)
+    const iconEl = wrapper.find('.qa-orders__item__plan__icon')
+    const src = iconEl.attributes().src
+
+    expect(src).to.deep.equal(propsData.plan.icon)
   })
 
   it('title |> text()', () => {
-    expect(wrapper.find('.qa-orders__item__plan__title').text()).to.deep.equal(propsData.plan.title)
+    const titleEl = wrapper.find('.qa-orders__item__plan__title')
+
+    expect(titleEl.text()).to.deep.equal(propsData.plan.title)
   })
 
   it('actions |> exists()', () => {
-    expect(wrapper.find('.qa-orders__item__actions').exists()).to.be.true
+    const actionsEl = wrapper.find('.qa-orders__item__actions')
+
+    expect(actionsEl.exists()).to.be.true
   })
 
-  it('proposal |> findAll(), filter(), attributes(), at()', () => {
-    const documentsAnchor = wrapper.findAll('.qa-orders__item__actions__documents > a')
-    const proposal = documentsAnchor.filter(item => item.text() === 'Ver Proposta').at(0)
+  it('proposal |> findAll(), filter(), text(), attributes(), at()', () => {
+    const documentsAnchorEl = wrapper.findAll('.qa-orders__item__actions__documents > a')
+    const proposalEl = documentsAnchorEl.filter(i => i.text() === 'Ver Proposta').at(0)
+    const href = proposalEl.attributes().href
 
-    expect(proposal.attributes().href).to.deep.equal(propsData.documents.proposal)
+    expect(href).to.deep.equal(propsData.documents.proposal)
   })
 
-  it('contract |> findAll(), filter(), attributes(), at()', () => {
-    const documentsAnchor = wrapper.findAll('.qa-orders__item__actions__documents > a')
-    const contract = documentsAnchor.filter(item => item.text() === 'Ver Contrato').at(0)
+  it('contract |> findAll(), filter(), text(), attributes(), at()', () => {
+    const documentsAnchorEl = wrapper.findAll('.qa-orders__item__actions__documents > a')
+    const contractEl = documentsAnchorEl.filter(i => i.text() === 'Ver Contrato').at(0)
+    const href = contractEl.attributes().href
 
-    expect(contract.attributes().href).to.deep.equal(propsData.documents.contract)
+    expect(href).to.deep.equal(propsData.documents.contract)
   })
 
   it('not cancel |> exists()', () => {
-    expect(wrapper.find('.qa-orders__item__actions__cancel-plan').exists()).to.be.false
+    const cancelEl = wrapper.find('.qa-orders__item__actions__cancel-plan')
+
+    expect(cancelEl.exists()).to.be.false
   })
 
   it('disabled text |> exists()', () => {
-    expect(wrapper.find('.qa-orders__item__canceled-text').exists()).to.be.false
+    const canceledEl = wrapper.find('.qa-orders__item__canceled-text')
+
+    expect(canceledEl.exists()).to.be.false
   })
 
   it('main |> text()', () => {
-    expect(wrapper.find('.qa-orders__item__life-main__name').text()).to.deep.equal(propsData.beneficiaries.main)
+    const nameEl = wrapper.find('.qa-orders__item__life-main__name')
+
+    expect(nameEl.text()).to.deep.equal(propsData.beneficiaries.main)
   })
 
   it('not dependents |> exists()', () => {
-    expect(wrapper.find('.qa-orders__item__dependents__items').exists()).to.be.false
-    expect(wrapper.find('span.qa-orders__item__dependents__items__item').exists()).to.be.true
+    const dependentsEl = wrapper.find('.qa-orders__item__dependents__items')
+    expect(dependentsEl.exists()).to.be.false
+
+    const dependentsEmptyEl = wrapper.find('span.qa-orders__item__dependents__items__item')
+    expect(dependentsEmptyEl.exists()).to.be.true
   })
 
   it('cancel |> exists()', () => {
@@ -77,7 +97,8 @@ describe('Order.vue', () => {
       orderStatus: 'complete'
     })
 
-    expect(wrapper.find('.qa-orders__item__actions__cancel-plan').exists()).to.be.true
+    const cancelEl = wrapper.find('.qa-orders__item__actions__cancel-plan')
+    expect(cancelEl.exists()).to.be.true
   })
 
   it('dependents |> exists(), text()', () => {
@@ -91,11 +112,12 @@ describe('Order.vue', () => {
       })
     })
     
-    const dependentsItems = newWrapper.find('.qa-orders__item__dependents__items')
+    const dependentItemsEl = newWrapper.find('.qa-orders__item__dependents__items')
+    expect(dependentItemsEl.exists()).to.be.true
+    expect(dependentItemsEl.text()).to.deep.equal(dependents.join(''))
 
-    expect(dependentsItems.exists()).to.be.true
-    expect(newWrapper.find('span.qa-orders__item__dependents__items__item').exists()).to.be.false
-    expect(dependentsItems.text()).to.deep.equal(dependents.join(''))
+    const dependentsEmptyEl = newWrapper.find('span.qa-orders__item__dependents__items__item')
+    expect(dependentsEmptyEl.exists()).to.be.false
   })
 
   it('click |> trigger()', () => {
@@ -110,7 +132,8 @@ describe('Order.vue', () => {
 
     expect(clickHandler.called).to.be.false
 
-    newWrapper.find('.qa-orders__item__actions__cancel-plan button').trigger('click')
+    const buttonEl = newWrapper.find('.qa-orders__item__actions__cancel-plan button')
+    buttonEl.trigger('click')
 
     expect(clickHandler.called).to.be.true
   })
@@ -122,8 +145,13 @@ describe('Order.vue', () => {
       })
     })
 
-    expect(newWrapper.find('.qa-orders__item').classes()).to.include('disabled')
-    expect(newWrapper.find('.qa-orders__item__actions').exists()).to.be.false
-    expect(newWrapper.find('.qa-orders__item__canceled-text').exists()).to.be.true
+    const orderItemEl = newWrapper.find('.qa-orders__item')
+    expect(orderItemEl.classes()).to.include('disabled')
+
+    const actionsEl = newWrapper.find('.qa-orders__item__actions')
+    expect(actionsEl.exists()).to.be.false
+
+    const canceledEl = newWrapper.find('.qa-orders__item__canceled-text')
+    expect(canceledEl.exists()).to.be.true
   })
 })

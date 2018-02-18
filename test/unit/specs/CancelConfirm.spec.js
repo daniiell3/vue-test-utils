@@ -17,11 +17,15 @@ describe('CancelConfirm.vue', () => {
   })
 
   it('title |> text()', () => {
-    expect(wrapper.find('.qa-confirm-cancel__title').text()).to.include(propsData.title.toUpperCase())
+    const titleEl = wrapper.find('.qa-confirm-cancel__title')
+
+    expect(titleEl.text()).to.include(propsData.title.toUpperCase())
   })
 
   it('not dependents |> exists()', () => {
-    expect(wrapper.find('.qa-confirm-cancel__dependents-wrap').exists()).to.be.false
+    const dependentsEl = wrapper.find('.qa-confirm-cancel__dependents-wrap')
+
+    expect(dependentsEl.exists()).to.be.false
   })
 
   it('dependents |> exists(), text()', () => {
@@ -31,10 +35,10 @@ describe('CancelConfirm.vue', () => {
       dependents: dependents
     })
 
-    const element = wrapper.find('.qa-confirm-cancel__dependents-wrap__items')
+    const dependentItemsEl = wrapper.find('.qa-confirm-cancel__dependents-wrap__items')
 
-    expect(element.exists()).to.be.true
-    expect(element.text()).to.deep.equal(dependents.join(''))
+    expect(dependentItemsEl.exists()).to.be.true
+    expect(dependentItemsEl.text()).to.deep.equal(dependents.join(''))
   })
 
   it('cancel |> trigger()', () => {
@@ -46,7 +50,8 @@ describe('CancelConfirm.vue', () => {
 
     expect(clickHandler.called).to.be.false
 
-    wrapper.find('.qa-confirm-cancel__actions__action--no button').trigger('click')
+    const buttonEl = wrapper.find('.qa-confirm-cancel__actions__action--no button')
+    buttonEl.trigger('click')
 
     expect(clickHandler.called).to.be.true
   })
@@ -60,7 +65,8 @@ describe('CancelConfirm.vue', () => {
 
     expect(clickHandler.called).to.be.false
 
-    wrapper.find('.qa-confirm-cancel__actions__action--yes button').trigger('click')
+    const buttonEl = wrapper.find('.qa-confirm-cancel__actions__action--yes button')
+    buttonEl.trigger('click')
 
     expect(clickHandler.called).to.be.true
   })
@@ -70,6 +76,7 @@ describe('CancelConfirm.vue', () => {
       isActive: false
     })
 
-    expect(wrapper.find('.qa-confirm-cancel').exists()).to.be.false
+    const cancelEl = wrapper.find('.qa-confirm-cancel')
+    expect(cancelEl.exists()).to.be.false
   })
 })
