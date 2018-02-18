@@ -24,4 +24,11 @@ describe('Order.vue', () => {
   const wrapper = shallow(Order, {
     propsData
   })
+
+  it('icon |> attributes()', () => {
+    const iconEl = wrapper.find('.qa-orders__icon')
+    const src = iconEl.attributes().src
+
+    expect(src).to.deep.equal(propsData.plan.icon)
+  })
 })
