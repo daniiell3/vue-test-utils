@@ -61,17 +61,17 @@ describe('CancelConfirm.vue', () => {
         strict: false
       })
     })
-  
+
     it('name |> text()', () => {
       const wrapper = shallow(Dentist, {
         store,
         localVue
       })
       const titleEl = wrapper.find('.qa-dentist__title')
-  
+
       expect(titleEl.text()).to.deep.equal(`Dr(a). ${state.item.name}`)
     })
-  
+
     it('info |> text()', () => {
       const wrapper = shallow(Dentist, {
         store,
@@ -79,11 +79,11 @@ describe('CancelConfirm.vue', () => {
       })
       const textEl = wrapper.find('.qa-dentist__info')
       const text = textEl.text()
-  
+
       expect(text).to.include(state.item.cro)
       expect(text).to.include(state.item.providerType)
     })
-    
+
     it('specialties |> text()', () => {
       const wrapper = mount(Dentist, {
         store,
@@ -91,10 +91,10 @@ describe('CancelConfirm.vue', () => {
       })
       const itemsEl = wrapper.find('.qa-dentist__specialties__items')
       const specialties = state.item.specialties.map(i => i.title).join(' ')
-  
+
       expect(itemsEl.text()).to.deep.equal(specialties)
     })
-  
+
     it('address |> text()', () => {
       const wrapper = shallow(Dentist, {
         store,
@@ -102,11 +102,11 @@ describe('CancelConfirm.vue', () => {
       })
       const addressEl = wrapper.findAll('.qa-dentist__address__info')
       const text = addressEl.at(0).text()
-  
+
       expect(text).to.include(state.item.address.description)
       expect(text).to.include(state.item.address.neighborhood)
     })
-  
+
     it('postcode |> text()', () => {
       const wrapper = shallow(Dentist, {
         store,
@@ -114,10 +114,10 @@ describe('CancelConfirm.vue', () => {
       })
       const addressEl = wrapper.findAll('.qa-dentist__address__info')
       const text = addressEl.at(1).text()
-  
+
       expect(text).to.include(state.item.address.postcode)
     })
-  
+
     it('city - state |> text()', () => {
       const wrapper = shallow(Dentist, {
         store,
@@ -125,21 +125,21 @@ describe('CancelConfirm.vue', () => {
       })
       const addressEl = wrapper.find('.qa-dentist__address__info--last')
       const text = addressEl.text()
-  
+
       expect(text).to.include(state.item.address.city)
       expect(text).to.include(state.item.address.state)
     })
-  
+
     it('phone |> text()', () => {
       const wrapper = shallow(Dentist, {
         store,
         localVue
       })
       const contactEl = wrapper.find('.qa-dentist__contact__info')
-  
+
       expect(contactEl.text()).to.deep.equal(state.item.phone)
     })
-  
+
     it('scheduleUrl |> exists(), attributes()', () => {
       const wrapper = shallow(Dentist, {
         store,

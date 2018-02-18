@@ -103,7 +103,7 @@ describe('Order.vue', () => {
 
   it('dependents |> exists(), text()', () => {
     const dependents = ['Daniela Souza', 'Maria Tereza']
-    
+
     const newWrapper = shallow(Order, {
       propsData: Object.assign({}, propsData, {
         beneficiaries: Object.assign({}, propsData.beneficiaries, {
@@ -111,7 +111,7 @@ describe('Order.vue', () => {
         })
       })
     })
-    
+
     const dependentItemsEl = newWrapper.find('.qa-orders__dependents__items')
     expect(dependentItemsEl.exists()).to.be.true
     expect(dependentItemsEl.text()).to.deep.equal(dependents.join(''))

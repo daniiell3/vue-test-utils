@@ -29,7 +29,7 @@
       </div>
       <div
         v-if="isComplete"
-        class="c-orders__cancel-plan qa-orders__cancel-plan" 
+        class="c-orders__cancel-plan qa-orders__cancel-plan"
       >
         <VButton
           label="Cancelar Plano"

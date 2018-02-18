@@ -54,9 +54,9 @@ storiesOf('Order - Props', module)
       return h(Order, { props: Object.assign({}, orderProps, {
         orderStatus: 'canceled',
         beneficiaries: Object.assign({}, orderProps.beneficiaries, {
-          dependents: ['Daniela Souza', 'Maria Tereza'],
+          dependents: ['Daniela Souza', 'Maria Tereza']
         })
-      }) }, ['renders component: Order'])
+      })}, ['renders component: Order'])
     }
   }))
 
@@ -156,7 +156,7 @@ const store = new Vuex.Store({
   },
   strict: false
 })
-  
+
 storiesOf('Dentist - Vuex', module)
   .addDecorator(Centered)
   .add('Default', () => ({
