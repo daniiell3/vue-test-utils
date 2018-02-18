@@ -70,5 +70,17 @@ describe('CancelConfirm.vue', () => {
 
       expect(titleEl.text()).to.deep.equal(`Dr(a). ${state.item.name}`)
     })
+
+    it('info |> text()', () => {
+      const wrapper = shallow(Dentist, {
+        store,
+        localVue
+      })
+      const textEl = wrapper.find('.qa-dentist__info')
+      const text = textEl.text()
+
+      expect(text).to.include(state.item.cro)
+      expect(text).to.include(state.item.providerType)
+    })
   })
 })
