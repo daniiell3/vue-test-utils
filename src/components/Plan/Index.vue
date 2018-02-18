@@ -8,8 +8,7 @@
       <img
         v-if="icon"
         class="c-plan__icon qa-plan__icon"
-        :src="icon"
-      />
+        :src="icon" />
       <h3 class="c-plan__title qa-plan__title">{{ title }}</h3>
       <div
         v-if="description"
