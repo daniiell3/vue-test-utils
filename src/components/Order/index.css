@@ -106,23 +106,23 @@
     float: left;
     vertical-align: top;
     top: 7px;
+  }
 
-    &__icon {
-      display: block;
-      margin: 0 auto 5px;
-      width: 60px;
-    }
+  &__icon {
+    display: block;
+    margin: 0 auto 5px;
+    width: 60px;
+  }
 
-    &__title {
-      font-size: 18px;
-      line-height: 22px;
-      font-weight: 900;
-      color: #1974CE;
-      display: inline-block;
-      width: 100%;
-      text-align: center;
-      margin: 0;
-    }
+  &__title {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 900;
+    color: #1974CE;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin: 0;
   }
 
   &__actions {
@@ -130,59 +130,59 @@
     vertical-align: top;
     float: right;
     width: 140px;
+  }
 
-    &__documents, &__cancel-plan {
-      margin-bottom: 10px;
+  &__documents, &__cancel-plan {
+    margin-bottom: 10px;
 
-      & > button {
-        padding: 0;
-        width: 100%;
-        height: 43px;
-        border-radius: 4px;
+    & > button {
+      padding: 0;
+      width: 100%;
+      height: 43px;
+      border-radius: 4px;
 
-        & > span {
-          font-size: 12px;
-          font-weight: 900;
-        }
-      }
-      
-      & > .a-btn {
-        padding: 3px 0;
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-
-        & > span {
-          font-size: 12px;
-          font-weight: 900;
-        }
+      & > span {
+        font-size: 12px;
+        font-weight: 900;
       }
     }
+    
+    & > .a-btn {
+      padding: 3px 0;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
 
-    &__cancel-plan {
-      margin-bottom: 0;
-
-      & > button {
-        text-indent: 15px;
-
-        &:before {
-          content: "";
-          position: absolute;
-          left: 15px;
-          background-image: url(../../assets/images/cancel-contract.svg);
-          background-repeat: no-repeat;
-          background-size: 12px;
-          width: 12px;
-          height: 14px;
-          top: 50%;
-          transform: translateY(-50%);
-          background-position: center;
-        }
+      & > span {
+        font-size: 12px;
+        font-weight: 900;
       }
     }
   }
 
-  &__life-main, &__dependents {
+  &__cancel-plan {
+    margin-bottom: 0;
+
+    & > button {
+      text-indent: 15px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 15px;
+        background-image: url(../../assets/images/cancel-contract.svg);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        width: 12px;
+        height: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-position: center;
+      }
+    }
+  }
+
+  &__main, &__dependents {
     &__title {
       font-size: 14px;
       display: inline-block;
@@ -193,7 +193,7 @@
     }
   }
 
-  &__life-main {
+  &__main {
     display: inline-block;
     margin: 25px 0 20px;
     width: 100%;
@@ -214,17 +214,17 @@
       width: 100%;
       margin: 0;
       padding: 0;
+    }
 
-      &__item {
-        font-size: 14px;
-        color: #8E8E8B;
-        font-weight: 300;
-        margin-top: 7px;
-        list-style: none;
+    &__item {
+      font-size: 14px;
+      color: #8E8E8B;
+      font-weight: 300;
+      margin-top: 7px;
+      list-style: none;
 
-        &:first-child {
-          margin-top: 0;
-        }
+      &:first-child {
+        margin-top: 0;
       }
     }
   }
@@ -241,7 +241,7 @@
   &.disabled {
     opacity: .6;
 
-    & .orders__item__life-main, & .orders__item__dependents {
+    & .orders__item__main, & .orders__item__dependents {
       &__title {
         color: #8E8E8B;
       }
@@ -259,24 +259,24 @@
       margin-right: 30px;
       top: 0;
       min-height: 111px;
-
-      &__icon {
-        width: 90px;
-      }
-
-      &__title {
-        font-size: 20px;
-        line-height: 26px;
-      }
     }
 
-    &__life-main, &__dependents {
+    &__icon {
+      width: 90px;
+    }
+
+    &__title {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    &__main, &__dependents {
       &__title {
         font-size: 16px;
       }
     }
 
-    &__life-main {
+    &__main {
       margin: 0 0 30px;
       width: calc(100% - 170px);
 
@@ -289,11 +289,9 @@
     &__dependents {
       width: calc(100% - 170px);
 
-      &__items {
-        &__item {
-          font-weight: 400;
-          font-size: 15px;
-        }
+      &__item {
+        font-weight: 400;
+        font-size: 15px;
       }
     }
 
@@ -303,27 +301,27 @@
       top: 50%;
       transform: translateY(-50%);
       width: 170px;
+    }
 
-      &__proposal, &__cancel-plan {
-        & > button {
-          height: 50px;
+    &__proposal, &__cancel-plan {
+      & > button {
+        height: 50px;
 
-          & > span {
-            font-size: 14px;
-          }
+        & > span {
+          font-size: 14px;
         }
       }
+    }
 
-      &__cancel-plan {
-        & > button {
-          text-indent: 17px;
+    &__cancel-plan {
+      & > button {
+        text-indent: 17px;
 
-          &:before {
-            left: 20px;
-            background-size: 15px;
-            width: 15px;
-            height: 16px;
-          }
+        &:before {
+          left: 20px;
+          background-size: 15px;
+          width: 15px;
+          height: 16px;
         }
       }
     }

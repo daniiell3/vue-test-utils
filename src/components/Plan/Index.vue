@@ -21,7 +21,7 @@
         <h5 class="c-plan__advantages__title">Algumas das Vantagens</h5>
         <ul class="c-plan__advantages__items qa-plan__advantages__items">
           <li
-            class="c-plan__advantages__items__item"
+            class="c-plan__advantages__item"
             v-for="(advantage, key) in advantages"
             :key="key"
           >{{ advantage }}</li>
