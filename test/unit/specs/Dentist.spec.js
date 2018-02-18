@@ -82,5 +82,16 @@ describe('CancelConfirm.vue', () => {
       expect(text).to.include(state.item.cro)
       expect(text).to.include(state.item.providerType)
     })
+
+    it('specialties |> text()', () => {
+      const wrapper = mount(Dentist, {
+        store,
+        localVue
+      })
+      const itemsEl = wrapper.find('.qa-dentist__specialties__items')
+      const specialties = state.item.specialties.map(i => i.title).join(' ')
+
+      expect(itemsEl.text()).to.deep.equal(specialties)
+    })
   })
 })
