@@ -94,4 +94,31 @@ describe('CancelConfirm.vue', () => {
       expect(itemsEl.text()).to.deep.equal(specialties)
     })
   })
+
+  describe('not active', () => {
+    beforeEach(() => {
+      store = new Vuex.Store({
+        modules: {
+          dentist: {
+            namespaced: true,
+            state: Object.assign({}, state, {
+              isActive: false
+            }),
+            getters: getters
+          }
+        },
+        strict: false
+      })
+    })
+
+    it('active |> exists()', () => {
+      const wrapper = shallow(Dentist, {
+        store,
+        localVue
+      })
+      const dentistEl = wrapper.find('.qa-dentist')
+
+      expect(dentistEl.exists()).to.be.false
+    })
+  })
 })
