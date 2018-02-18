@@ -37,4 +37,10 @@ describe('Order.vue', () => {
 
     expect(titleEl.text()).to.deep.equal(propsData.plan.title)
   })
+
+  it('main |> text()', () => {
+    const nameEl = wrapper.find('.qa-orders__main__name')
+
+    expect(nameEl.text()).to.deep.equal(propsData.beneficiaries.main)
+  })
 })
