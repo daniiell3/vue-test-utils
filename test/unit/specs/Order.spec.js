@@ -43,4 +43,12 @@ describe('Order.vue', () => {
 
     expect(nameEl.text()).to.deep.equal(propsData.beneficiaries.main)
   })
+
+  it('not dependents |> exists()', () => {
+    const dependentsEl = wrapper.find('.qa-orders__dependents__items')
+    expect(dependentsEl.exists()).to.be.false
+
+    const dependentsEmptyEl = wrapper.find('span.qa-orders__dependents__item')
+    expect(dependentsEmptyEl.exists()).to.be.true
+  })
 })
