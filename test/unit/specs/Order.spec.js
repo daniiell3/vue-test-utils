@@ -31,4 +31,10 @@ describe('Order.vue', () => {
 
     expect(src).to.deep.equal(propsData.plan.icon)
   })
+
+  it('title |> text()', () => {
+    const titleEl = wrapper.find('.qa-orders__title')
+
+    expect(titleEl.text()).to.deep.equal(propsData.plan.title)
+  })
 })
