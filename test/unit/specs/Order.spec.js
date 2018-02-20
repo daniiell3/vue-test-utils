@@ -56,12 +56,14 @@ it('does not render dependents when not passed dependents prop', () => {
 it('dependents correctly rendered when passed dependents prop', () => {
   const dependents = ['Daniela Souza', 'Maria Tereza']
 
-  const newWrapper = shallow(Order, {
-    propsData: Object.assign({}, propsData, {
-      beneficiaries: Object.assign({}, propsData.beneficiaries, {
-        dependents: dependents
-      })
+  const newProps = Object.assign({}, propsData, {
+    beneficiaries: Object.assign({}, propsData.beneficiaries, {
+      dependents: dependents
     })
+  })
+
+  const newWrapper = shallow(Order, {
+    propsData: newProps
   })
 
   const dependentItemsEl = newWrapper.find('.qa-orders__dependents__items')
