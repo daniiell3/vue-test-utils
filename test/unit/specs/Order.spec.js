@@ -24,7 +24,7 @@ const wrapper = shallow(Order, {
   propsData
 })
 
-it('does not render with disabled class when not passed orderStatus canceled', () => {
+it('does not render with disabled class when not passed order status prop as canceled', () => {
   const orderItemsEl = wrapper.find('.qa-orders')
 
   expect(orderItemsEl.classes()).to.not.include('disabled')
@@ -43,7 +43,7 @@ it('title correctly rendered', () => {
   expect(titleEl.text()).to.deep.equal(propsData.plan.title)
 })
 
-it('buttons correctly rendered when passed not orderStatus canceled', () => {
+it('buttons correctly rendered when passed not order status prop as canceled', () => {
   const actionsEl = wrapper.find('.qa-orders__actions')
 
   expect(actionsEl.exists()).to.be.true
@@ -65,13 +65,13 @@ it('contract correctly rendered', () => {
   expect(href).to.deep.equal(propsData.documents.contract)
 })
 
-it('does not render cancel button when not passed orderStatus complete', () => {
+it('does not render cancel button when not passed order status prop as complete', () => {
   const cancelEl = wrapper.find('.qa-orders__cancel-plan')
 
   expect(cancelEl.exists()).to.be.false
 })
 
-it('does not render disabled text when not passed orderStatus canceled', () => {
+it('does not render disabled text when not passed order status prop as canceled', () => {
   const canceledEl = wrapper.find('.qa-orders__canceled-text')
 
   expect(canceledEl.exists()).to.be.false
@@ -83,7 +83,7 @@ it('name of main life correctly rendered', () => {
   expect(nameEl.text()).to.deep.equal(propsData.beneficiaries.main)
 })
 
-it('does not render dependents when not passed dependents', () => {
+it('does not render dependents when not passed dependents prop', () => {
   const dependentsEl = wrapper.find('.qa-orders__dependents__items')
   expect(dependentsEl.exists()).to.be.false
 
@@ -91,7 +91,7 @@ it('does not render dependents when not passed dependents', () => {
   expect(dependentsEmptyEl.exists()).to.be.true
 })
 
-it('cancel button correctly rendered when passed orderStatus complete', () => {
+it('cancel button correctly rendered when passed order status prop as complete', () => {
   wrapper.setProps({
     orderStatus: 'complete'
   })
@@ -100,7 +100,7 @@ it('cancel button correctly rendered when passed orderStatus complete', () => {
   expect(cancelEl.exists()).to.be.true
 })
 
-it('dependents correctly rendered when passed dependents', () => {
+it('dependents correctly rendered when passed dependents prop', () => {
   const dependents = ['Daniela Souza', 'Maria Tereza']
 
   const newWrapper = shallow(Order, {
@@ -137,7 +137,7 @@ it('calls clickHandler when cancel button is clicked', () => {
   expect(clickHandler.called).to.be.true
 })
 
-it('correctly rendered with disabled class when passed orderStatus canceled', () => {
+it('correctly rendered with disabled class when passed order status prop as canceled', () => {
   wrapper.setProps({
     orderStatus: 'canceled'
   })
@@ -147,13 +147,13 @@ it('correctly rendered with disabled class when passed orderStatus canceled', ()
   expect(orderItemsEl.classes()).to.include('disabled')
 })
 
-it('does buttons not render when passed orderStatus canceled', () => {
+it('does buttons not render when passed order status prop as canceled', () => {
   const actionsEl = wrapper.find('.qa-orders__actions')
 
   expect(actionsEl.exists()).to.be.false
 })
 
-it('correctly rendered disabled text when passed orderStatus canceled', () => {
+it('correctly rendered disabled text when passed order status prop as canceled', () => {
   const canceledEl = wrapper.find('.qa-orders__canceled-text')
 
   expect(canceledEl.exists()).to.be.true

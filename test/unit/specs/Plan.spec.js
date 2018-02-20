@@ -2,115 +2,113 @@ import { shallow } from '@vue/test-utils'
 import { expect } from 'chai'
 import Plan from '@/components/Plan/Index.vue'
 
-describe('Plan.vue', () => {
-  const propsData = {
-    title: 'Dental Estética',
-    real: 'R$ 115',
-    cents: '00',
-    icon: 'https://loja.odontoprevonline.com.br/pub/media/catalog/product//e/s/estetica_2.png'
-  }
+const propsData = {
+  title: 'Dental Estética',
+  real: 'R$ 115',
+  cents: '00',
+  icon: 'https://loja.odontoprevonline.com.br/pub/media/catalog/product//e/s/estetica_2.png'
+}
 
-  const wrapper = shallow(Plan, {
-    propsData
+const wrapper = shallow(Plan, {
+  propsData
+})
+
+it('does not render label when not passed label prop', () => {
+  const labelEl = wrapper.find('.qa-plan__label')
+
+  expect(labelEl.exists()).to.be.false
+})
+
+it('icon correctly rendered', () => {
+  const iconEl = wrapper.find('.qa-plan__icon')
+  const src = iconEl.attributes().src
+
+  expect(src).to.deep.equal(propsData.icon)
+})
+
+it('title correctly rendered', () => {
+  const titleEl = wrapper.find('.qa-plan__title')
+
+  expect(titleEl.text()).to.deep.equal(propsData.title)
+})
+
+it('does not render description when not passed description prop', () => {
+  const descriptionEl = wrapper.find('.qa-plan__description')
+
+  expect(descriptionEl.exists()).to.be.false
+})
+
+it('does not render advantages when not passed advantages prop', () => {
+  const advantagesEl = wrapper.find('.qa-plan__advantages')
+
+  expect(advantagesEl.exists()).to.be.false
+})
+
+it('price correctly rendered', () => {
+  const priceEl = wrapper.find('.qa-plan__price')
+
+  expect(priceEl.text()).to.deep.equal(`${propsData.real}, ${propsData.cents}`)
+})
+
+it('advantages correctly rendered when passed advantages prop', () => {
+  const advantages = [
+    'Placa de Clareamento + Gel',
+    'Limpezas Periódicas',
+    'Emergência 24h'
+  ]
+
+  wrapper.setProps({
+    advantages: advantages
   })
 
-  it('not label |> exists()', () => {
-    const labelEl = wrapper.find('.qa-plan__label')
+  const advantagesEl = wrapper.find('.qa-plan__advantages')
+  expect(advantagesEl.exists()).to.be.true
 
-    expect(labelEl.exists()).to.be.false
+  const advantagesItemsEl = wrapper.find('.qa-plan__advantages__items')
+  expect(advantagesItemsEl.text()).to.deep.equal(advantages.join(''))
+})
+
+it('label correctly rendered when passed label prop', () => {
+  const label = 'mais vendido'
+
+  wrapper.setProps({
+    label: label
   })
 
-  it('icon |> attributes()', () => {
-    const iconEl = wrapper.find('.qa-plan__icon')
-    const src = iconEl.attributes().src
+  const labelEl = wrapper.find('.qa-plan__label')
 
-    expect(src).to.deep.equal(propsData.icon)
+  expect(labelEl.exists()).to.be.true
+  expect(labelEl.text()).to.deep.equal(label)
+})
+
+it('description correctly rendered when passed description prop', () => {
+  const description = '<p>Aqui você encontra planos mensais, anuais e sem carência, para usar amanhã!</p>'
+
+  wrapper.setProps({
+    description: description
   })
 
-  it('title |> text()', () => {
-    const titleEl = wrapper.find('.qa-plan__title')
+  const descriptionEl = wrapper.find('.qa-plan__description > *')
+  expect(descriptionEl.html()).to.deep.equal(description)
+})
 
-    expect(titleEl.text()).to.deep.equal(propsData.title)
-  })
-
-  it('not description |> exists()', () => {
-    const descriptionEl = wrapper.find('.qa-plan__description')
-
-    expect(descriptionEl.exists()).to.be.false
-  })
-
-  it('not advantages |> exists()', () => {
-    const advantagesEl = wrapper.find('.qa-plan__advantages')
-
-    expect(advantagesEl.exists()).to.be.false
-  })
-
-  it('price |> text()', () => {
-    const priceEl = wrapper.find('.qa-plan__price')
-
-    expect(priceEl.text()).to.deep.equal(`${propsData.real}, ${propsData.cents}`)
-  })
-
-  it('advantages |> exists(), text()', () => {
-    const advantages = [
-      'Placa de Clareamento + Gel',
-      'Limpezas Periódicas',
-      'Emergência 24h'
-    ]
-
-    wrapper.setProps({
-      advantages: advantages
+it('does not render when not passed title prop', () => {
+  const newWrapper = shallow(Plan, {
+    propsData: Object.assign({}, propsData, {
+      title: ''
     })
-
-    const advantagesEl = wrapper.find('.qa-plan__advantages')
-    expect(advantagesEl.exists()).to.be.true
-
-    const advantagesItemsEl = wrapper.find('.qa-plan__advantages__items')
-    expect(advantagesItemsEl.text()).to.deep.equal(advantages.join(''))
   })
 
-  it('label |> exists(), text()', () => {
-    const label = 'mais vendido'
+  expect(newWrapper.isEmpty()).to.be.true
+})
 
-    wrapper.setProps({
-      label: label
+it('does not render advantages when passed advantages prop as empty', () => {
+  const newWrapper = shallow(Plan, {
+    propsData: Object.assign({}, propsData, {
+      advantages: []
     })
-
-    const labelEl = wrapper.find('.qa-plan__label')
-
-    expect(labelEl.exists()).to.be.true
-    expect(labelEl.text()).to.deep.equal(label)
   })
 
-  it('description |> html()', () => {
-    const description = '<p>Aqui você encontra planos mensais, anuais e sem carência, para usar amanhã!</p>'
-
-    wrapper.setProps({
-      description: description
-    })
-
-    const descriptionEl = wrapper.find('.qa-plan__description > *')
-    expect(descriptionEl.html()).to.deep.equal(description)
-  })
-
-  it('not title |> isEmpty()', () => {
-    const newWrapper = shallow(Plan, {
-      propsData: Object.assign({}, propsData, {
-        title: ''
-      })
-    })
-
-    expect(newWrapper.isEmpty()).to.be.true
-  })
-
-  it('not advantages |> text()', () => {
-    const newWrapper = shallow(Plan, {
-      propsData: Object.assign({}, propsData, {
-        advantages: []
-      })
-    })
-
-    const advantagesEl = newWrapper.find('.qa-plan__advantages__items')
-    expect(advantagesEl.text()).to.be.empty
-  })
+  const advantagesEl = newWrapper.find('.qa-plan__advantages__items')
+  expect(advantagesEl.text()).to.be.empty
 })
