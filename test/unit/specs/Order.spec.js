@@ -1,5 +1,4 @@
 import { shallow, mount } from '@vue/test-utils'
-import { expect } from 'chai'
 import sinon from 'sinon'
 import Order from '@/components/Order/Index.vue'
 
