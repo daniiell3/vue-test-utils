@@ -1,5 +1,4 @@
 import { shallow, mount } from '@vue/test-utils'
-import { expect } from 'chai'
 import sinon from 'sinon'
 import Order from '@/components/Order/Index.vue'
 
@@ -28,13 +27,13 @@ it('icon correctly rendered', () => {
   const iconEl = wrapper.find('.qa-orders__icon')
   const src = iconEl.attributes().src
 
-  expect(src).to.deep.equal(propsData.plan.icon)
+  expect(src).toEqual(propsData.plan.icon)
 })
 
 it('title correctly rendered', () => {
   const titleEl = wrapper.find('.qa-orders__title')
 
-  expect(titleEl.text()).to.deep.equal(propsData.plan.title)
+  expect(titleEl.text()).toEqual(propsData.plan.title)
 })
 
 it('proposal correctly rendered', () => {
@@ -42,5 +41,5 @@ it('proposal correctly rendered', () => {
   const proposalEl = documentsAnchorEl.filter(i => i.text() === 'Ver Proposta').at(0)
   const href = proposalEl.attributes().href
 
-  expect(href).to.deep.equal(propsData.documents.proposal)
+  expect(href).toEqual(propsData.documents.proposal)
 })
