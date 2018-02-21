@@ -1,5 +1,4 @@
 import { shallow, mount, createLocalVue } from '@vue/test-utils'
-import { expect } from 'chai'
 import Vuex from 'vuex'
 import Dentist from '@/components/Dentist/Index.vue'
 
