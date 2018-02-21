@@ -67,6 +67,6 @@ describe('default', () => {
     })
     const titleEl = wrapper.find('.qa-dentist__title')
 
-    expect(titleEl.text()).to.deep.equal(`Dr(a). ${state.item.name}`)
+    expect(titleEl.text()).toEqual(`Dr(a). ${state.item.name}`)
   })
 })
