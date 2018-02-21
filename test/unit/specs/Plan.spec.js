@@ -1,5 +1,4 @@
 import { shallow } from '@vue/test-utils'
-import { expect } from 'chai'
 import Plan from '@/components/Plan/Index.vue'
 
 const propsData = {
@@ -16,38 +15,38 @@ const wrapper = shallow(Plan, {
 it('does not render label when not passed label prop', () => {
   const labelEl = wrapper.find('.qa-plan__label')
 
-  expect(labelEl.exists()).to.be.false
+  expect(labelEl.exists()).toBe(false)
 })
 
 it('icon correctly rendered', () => {
   const iconEl = wrapper.find('.qa-plan__icon')
   const src = iconEl.attributes().src
 
-  expect(src).to.deep.equal(propsData.icon)
+  expect(src).toEqual(propsData.icon)
 })
 
 it('title correctly rendered', () => {
   const titleEl = wrapper.find('.qa-plan__title')
 
-  expect(titleEl.text()).to.deep.equal(propsData.title)
+  expect(titleEl.text()).toEqual(propsData.title)
 })
 
 it('does not render description when not passed description prop', () => {
   const descriptionEl = wrapper.find('.qa-plan__description')
 
-  expect(descriptionEl.exists()).to.be.false
+  expect(descriptionEl.exists()).toBe(false)
 })
 
 it('does not render advantages when not passed advantages prop', () => {
   const advantagesEl = wrapper.find('.qa-plan__advantages')
 
-  expect(advantagesEl.exists()).to.be.false
+  expect(advantagesEl.exists()).toBe(false)
 })
 
 it('price correctly rendered', () => {
   const priceEl = wrapper.find('.qa-plan__price')
 
-  expect(priceEl.text()).to.deep.equal(`${propsData.real}, ${propsData.cents}`)
+  expect(priceEl.text()).toEqual(`${propsData.real}, ${propsData.cents}`)
 })
 
 it('advantages correctly rendered when passed advantages prop', () => {
@@ -62,10 +61,10 @@ it('advantages correctly rendered when passed advantages prop', () => {
   })
 
   const advantagesEl = wrapper.find('.qa-plan__advantages')
-  expect(advantagesEl.exists()).to.be.true
+  expect(advantagesEl.exists()).toBe(true)
 
   const advantagesItemsEl = wrapper.find('.qa-plan__advantages__items')
-  expect(advantagesItemsEl.text()).to.deep.equal(advantages.join(''))
+  expect(advantagesItemsEl.text()).toEqual(advantages.join(''))
 })
 
 it('label correctly rendered when passed label prop', () => {
@@ -77,8 +76,8 @@ it('label correctly rendered when passed label prop', () => {
 
   const labelEl = wrapper.find('.qa-plan__label')
 
-  expect(labelEl.exists()).to.be.true
-  expect(labelEl.text()).to.deep.equal(label)
+  expect(labelEl.exists()).toBe(true)
+  expect(labelEl.text()).toEqual(label)
 })
 
 it('description correctly rendered when passed description prop', () => {
@@ -89,7 +88,7 @@ it('description correctly rendered when passed description prop', () => {
   })
 
   const descriptionEl = wrapper.find('.qa-plan__description > *')
-  expect(descriptionEl.html()).to.deep.equal(description)
+  expect(descriptionEl.html()).toEqual(description)
 })
 
 it('does not render when not passed title prop', () => {
@@ -99,7 +98,7 @@ it('does not render when not passed title prop', () => {
     })
   })
 
-  expect(newWrapper.isEmpty()).to.be.true
+  expect(newWrapper.isEmpty()).toBe(true)
 })
 
 it('does not render advantages when passed advantages prop as empty', () => {
@@ -110,5 +109,5 @@ it('does not render advantages when passed advantages prop as empty', () => {
   })
 
   const advantagesEl = newWrapper.find('.qa-plan__advantages__items')
-  expect(advantagesEl.text()).to.be.empty
+  // expect(advantagesEl.text()).to.be.empty
 })

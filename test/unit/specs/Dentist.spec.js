@@ -1,5 +1,4 @@
 import { shallow, mount, createLocalVue } from '@vue/test-utils'
-import { expect } from 'chai'
 import Vuex from 'vuex'
 import Dentist from '@/components/Dentist/Index.vue'
 
@@ -68,7 +67,7 @@ describe('default', () => {
     })
     const titleEl = wrapper.find('.qa-dentist__title')
 
-    expect(titleEl.text()).to.deep.equal(`Dr(a). ${state.item.name}`)
+    expect(titleEl.text()).toEqual(`Dr(a). ${state.item.name}`)
   })
 
   it('info correctly rendered', () => {
@@ -79,8 +78,8 @@ describe('default', () => {
     const textEl = wrapper.find('.qa-dentist__info')
     const text = textEl.text()
 
-    expect(text).to.include(state.item.cro)
-    expect(text).to.include(state.item.providerType)
+    expect(text).toEqual(expect.stringContaining(state.item.cro))
+    expect(text).toEqual(expect.stringContaining(state.item.providerType))
   })
 
   it('specialties correctly rendered', () => {
@@ -91,7 +90,7 @@ describe('default', () => {
     const itemsEl = wrapper.find('.qa-dentist__specialties__items')
     const specialties = state.item.specialties.map(i => i.title).join(' ')
 
-    expect(itemsEl.text()).to.deep.equal(specialties)
+    expect(itemsEl.text()).toEqual(specialties)
   })
 
   it('address correctly rendered', () => {
@@ -102,8 +101,8 @@ describe('default', () => {
     const addressEl = wrapper.findAll('.qa-dentist__address__info')
     const text = addressEl.at(0).text()
 
-    expect(text).to.include(state.item.address.description)
-    expect(text).to.include(state.item.address.neighborhood)
+    expect(text).toEqual(expect.stringContaining(state.item.address.description))
+    expect(text).toEqual(expect.stringContaining(state.item.address.neighborhood))
   })
 
   it('postcode correctly rendered', () => {
@@ -114,7 +113,7 @@ describe('default', () => {
     const addressEl = wrapper.findAll('.qa-dentist__address__info')
     const text = addressEl.at(1).text()
 
-    expect(text).to.include(state.item.address.postcode)
+    expect(text).toEqual(expect.stringContaining(state.item.address.postcode))
   })
 
   it('city and state correctly rendered', () => {
@@ -125,8 +124,8 @@ describe('default', () => {
     const addressEl = wrapper.find('.qa-dentist__address__info--last')
     const text = addressEl.text()
 
-    expect(text).to.include(state.item.address.city)
-    expect(text).to.include(state.item.address.state)
+    expect(text).toEqual(expect.stringContaining(state.item.address.city))
+    expect(text).toEqual(expect.stringContaining(state.item.address.state))
   })
 
   it('phone correctly rendered', () => {
@@ -136,7 +135,7 @@ describe('default', () => {
     })
     const contactEl = wrapper.find('.qa-dentist__contact__info')
 
-    expect(contactEl.text()).to.deep.equal(state.item.phone)
+    expect(contactEl.text()).toEqual(state.item.phone)
   })
 
   it('scheduleUrl correctly rendered', () => {
@@ -146,10 +145,10 @@ describe('default', () => {
     })
 
     const consultEl = wrapper.find('.qa-dentist__boaconsulta')
-    expect(consultEl.exists()).to.be.true
+    expect(consultEl.exists()).toBe(true)
 
     const anchorEl = wrapper.find('.qa-dentist__boaconsulta > a')
-    expect(anchorEl.attributes().href).to.deep.equal(state.item.scheduleUrl)
+    expect(anchorEl.attributes().href).toEqual(state.item.scheduleUrl)
   })
 })
 
@@ -178,7 +177,7 @@ describe('schedule anchor', () => {
     })
     const consultEl = wrapper.find('.qa-dentist__boaconsulta')
 
-    expect(consultEl.exists()).to.be.false
+    expect(consultEl.exists()).toBe(false)
   })
 })
 
@@ -205,6 +204,6 @@ describe('does not render', () => {
     })
     const dentistEl = wrapper.find('.qa-dentist')
 
-    expect(dentistEl.exists()).to.be.false
+    expect(dentistEl.exists()).toBe(false)
   })
 })
