@@ -1,5 +1,4 @@
 import { shallow, mount, createLocalVue } from '@vue/test-utils'
-import { expect } from 'chai'
 import Vuex from 'vuex'
 import Dentist from '@/components/Dentist/Index.vue'
 
@@ -68,7 +67,7 @@ describe('default', () => {
     })
     const titleEl = wrapper.find('.qa-dentist__title')
 
-    expect(titleEl.text()).to.deep.equal(`Dr(a). ${state.item.name}`)
+    expect(titleEl.text()).toEqual(`Dr(a). ${state.item.name}`)
   })
 
   it('info correctly rendered', () => {
@@ -79,8 +78,8 @@ describe('default', () => {
     const textEl = wrapper.find('.qa-dentist__info')
     const text = textEl.text()
 
-    expect(text).to.include(state.item.cro)
-    expect(text).to.include(state.item.providerType)
+    expect(text).toEqual(expect.stringContaining(state.item.cro))
+    expect(text).toEqual(expect.stringContaining(state.item.providerType))
   })
 
   it('specialties correctly rendered', () => {
@@ -91,7 +90,7 @@ describe('default', () => {
     const itemsEl = wrapper.find('.qa-dentist__specialties__items')
     const specialties = state.item.specialties.map(i => i.title).join(' ')
 
-    expect(itemsEl.text()).to.deep.equal(specialties)
+    expect(itemsEl.text()).toEqual(specialties)
   })
 })
 
@@ -118,6 +117,6 @@ describe('does not render', () => {
     })
     const dentistEl = wrapper.find('.qa-dentist')
 
-    expect(dentistEl.exists()).to.be.false
+    expect(dentistEl.exists()).toBe(false)
   })
 })
